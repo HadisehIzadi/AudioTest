@@ -1,0 +1,124 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudio.LoadOptions
+  commentId: T:E7.Native.NativeAudio.LoadOptions
+  id: NativeAudio.LoadOptions
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudio.LoadOptions.defaultOptions
+  - E7.Native.NativeAudio.LoadOptions.resamplingQuality
+  langs:
+  - csharp
+  - vb
+  name: NativeAudio.LoadOptions
+  nameWithType: NativeAudio.LoadOptions
+  fullName: E7.Native.NativeAudio.LoadOptions
+  type: Struct
+  source:
+    id: LoadOptions
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 8
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nAn option for <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip%2cE7.Native.NativeAudio.LoadOptions)\" data-throw-if-not-resolved=\"false\"></xref>.\nBecause it is a `struct`, start making it from <xref href=\"E7.Native.NativeAudio.LoadOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref> to get a good default values.\n"
+  example: []
+  syntax:
+    content: public struct LoadOptions
+    content.vb: Public Structure LoadOptions
+  modifiers.csharp:
+  - public
+  - struct
+  modifiers.vb:
+  - Public
+  - Structure
+- uid: E7.Native.NativeAudio.LoadOptions.defaultOptions
+  commentId: F:E7.Native.NativeAudio.LoadOptions.defaultOptions
+  id: defaultOptions
+  parent: E7.Native.NativeAudio.LoadOptions
+  langs:
+  - csharp
+  - vb
+  name: defaultOptions
+  nameWithType: NativeAudio.LoadOptions.defaultOptions
+  fullName: E7.Native.NativeAudio.LoadOptions.defaultOptions
+  type: Field
+  source:
+    id: defaultOptions
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 13
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nA good starting values to create custom options. A `struct` cannot have default value on `new`.\n"
+  example: []
+  syntax:
+    content: public static readonly NativeAudio.LoadOptions defaultOptions
+    return:
+      type: E7.Native.NativeAudio.LoadOptions
+    content.vb: Public Shared ReadOnly defaultOptions As NativeAudio.LoadOptions
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: E7.Native.NativeAudio.LoadOptions.resamplingQuality
+  commentId: F:E7.Native.NativeAudio.LoadOptions.resamplingQuality
+  id: resamplingQuality
+  parent: E7.Native.NativeAudio.LoadOptions
+  langs:
+  - csharp
+  - vb
+  name: resamplingQuality
+  nameWithType: NativeAudio.LoadOptions.resamplingQuality
+  fullName: E7.Native.NativeAudio.LoadOptions.resamplingQuality
+  type: Field
+  source:
+    id: resamplingQuality
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 59
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThe quality which `libsamplerate` will use to resample your audio to match the device&apos;s native rate.\nDefault to <xref href=\"E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST\" data-throw-if-not-resolved=\"false\"></xref> on <xref href=\"E7.Native.NativeAudio.LoadOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  remarks: "\nTwo top quality setting has been removed from the source code since the sinc wave constant coefficients\nare needed and could potentially make Native Audio sized at 0.79MB (For medium quality) or 9.2MB (For best quality)\n\nIf you really need it, you can uncomment and then go modify back the source and recompile with the missing coefficients.\n"
+  example: []
+  syntax:
+    content: public NativeAudio.LoadOptions.ResamplingQuality resamplingQuality
+    return:
+      type: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+    content.vb: Public resamplingQuality As NativeAudio.LoadOptions.ResamplingQuality
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  isExternal: true
+- uid: E7.Native.NativeAudio.LoadOptions.defaultOptions
+  commentId: F:E7.Native.NativeAudio.LoadOptions.defaultOptions
+  isExternal: true
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: E7.Native.NativeAudio.LoadOptions
+  commentId: T:E7.Native.NativeAudio.LoadOptions
+  parent: E7.Native
+  name: NativeAudio.LoadOptions
+  nameWithType: NativeAudio.LoadOptions
+  fullName: E7.Native.NativeAudio.LoadOptions
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  commentId: F:E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  isExternal: true
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  commentId: T:E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  parent: E7.Native
+  name: NativeAudio.LoadOptions.ResamplingQuality
+  nameWithType: NativeAudio.LoadOptions.ResamplingQuality
+  fullName: E7.Native.NativeAudio.LoadOptions.ResamplingQuality

@@ -1,0 +1,138 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  commentId: T:E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  id: NativeAudio.LoadOptions.ResamplingQuality
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudio.LoadOptions.ResamplingQuality.LINEAR
+  - E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  - E7.Native.NativeAudio.LoadOptions.ResamplingQuality.ZERO_ORDER_HOLD
+  langs:
+  - csharp
+  - vb
+  name: NativeAudio.LoadOptions.ResamplingQuality
+  nameWithType: NativeAudio.LoadOptions.ResamplingQuality
+  fullName: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  type: Enum
+  source:
+    id: ResamplingQuality
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 21
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nDetermines what resampling quality for [Secret Rabbit Code](http://www.mega-nerd.com/SRC/) to use.\n"
+  example: []
+  syntax:
+    content: public enum ResamplingQuality
+    content.vb: Public Enum ResamplingQuality
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  commentId: F:E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  id: SINC_FASTEST
+  parent: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  langs:
+  - csharp
+  - vb
+  name: SINC_FASTEST
+  nameWithType: NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  fullName: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.SINC_FASTEST
+  type: Field
+  source:
+    id: SINC_FASTEST
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 34
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nUse a coefficients from sinc wave for reconstruction. Takes a bit of time to complete.\n"
+  remarks: "\nSome benchmark : Resampling a WAV file of about 2MB (this is quite big) from 44.1kHz \nto 48kHz freezes the screen for 0.4 seconds on an Xperia Z5.\n(See https://ccrma.stanford.edu/~jos/resample/)\n"
+  example: []
+  syntax:
+    content: SINC_FASTEST = 2
+    return:
+      type: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.ZERO_ORDER_HOLD
+  commentId: F:E7.Native.NativeAudio.LoadOptions.ResamplingQuality.ZERO_ORDER_HOLD
+  id: ZERO_ORDER_HOLD
+  parent: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  langs:
+  - csharp
+  - vb
+  name: ZERO_ORDER_HOLD
+  nameWithType: NativeAudio.LoadOptions.ResamplingQuality.ZERO_ORDER_HOLD
+  fullName: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.ZERO_ORDER_HOLD
+  type: Field
+  source:
+    id: ZERO_ORDER_HOLD
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 40
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nJust use the previous value for any missing data. \nIt is the fastest resampling method but might sounds poor.\n"
+  example: []
+  syntax:
+    content: ZERO_ORDER_HOLD = 3
+    return:
+      type: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.LINEAR
+  commentId: F:E7.Native.NativeAudio.LoadOptions.ResamplingQuality.LINEAR
+  id: LINEAR
+  parent: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  langs:
+  - csharp
+  - vb
+  name: LINEAR
+  nameWithType: NativeAudio.LoadOptions.ResamplingQuality.LINEAR
+  fullName: E7.Native.NativeAudio.LoadOptions.ResamplingQuality.LINEAR
+  type: Field
+  source:
+    id: LINEAR
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/LoadOptions.cs
+    startLine: 46
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThe missing value will be linearly interpolated. \nFaster than sinc resampling.\n"
+  example: []
+  syntax:
+    content: LINEAR = 4
+    return:
+      type: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  commentId: T:E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+  parent: E7.Native
+  name: NativeAudio.LoadOptions.ResamplingQuality
+  nameWithType: NativeAudio.LoadOptions.ResamplingQuality
+  fullName: E7.Native.NativeAudio.LoadOptions.ResamplingQuality

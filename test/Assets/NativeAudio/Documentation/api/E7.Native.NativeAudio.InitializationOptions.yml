@@ -1,0 +1,199 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudio.InitializationOptions
+  commentId: T:E7.Native.NativeAudio.InitializationOptions
+  id: NativeAudio.InitializationOptions
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudio.InitializationOptions.androidAudioTrackCount
+  - E7.Native.NativeAudio.InitializationOptions.androidMinimumBufferSize
+  - E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  - E7.Native.NativeAudio.InitializationOptions.preserveOnMinimize
+  langs:
+  - csharp
+  - vb
+  name: NativeAudio.InitializationOptions
+  nameWithType: NativeAudio.InitializationOptions
+  fullName: E7.Native.NativeAudio.InitializationOptions
+  type: Struct
+  source:
+    id: InitializationOptions
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/InitializationOptions.cs
+    startLine: 10
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nAn option for <xref href=\"E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)\" data-throw-if-not-resolved=\"false\"></xref>.\nBecause it is a `struct`, start making it from <xref href=\"E7.Native.NativeAudio.InitializationOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref> to get a good default values.\n\nThis class is currently only contains options for Android. iOS options are fixed.\n"
+  example: []
+  syntax:
+    content: public struct InitializationOptions
+    content.vb: Public Structure InitializationOptions
+  modifiers.csharp:
+  - public
+  - struct
+  modifiers.vb:
+  - Public
+  - Structure
+- uid: E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  commentId: F:E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  id: defaultOptions
+  parent: E7.Native.NativeAudio.InitializationOptions
+  langs:
+  - csharp
+  - vb
+  name: defaultOptions
+  nameWithType: NativeAudio.InitializationOptions.defaultOptions
+  fullName: E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  type: Field
+  source:
+    id: defaultOptions
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/InitializationOptions.cs
+    startLine: 15
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nA good starting values to create custom options. A `struct` cannot have default value on `new`.\n"
+  example: []
+  syntax:
+    content: public static readonly NativeAudio.InitializationOptions defaultOptions
+    return:
+      type: E7.Native.NativeAudio.InitializationOptions
+    content.vb: Public Shared ReadOnly defaultOptions As NativeAudio.InitializationOptions
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: E7.Native.NativeAudio.InitializationOptions.androidAudioTrackCount
+  commentId: F:E7.Native.NativeAudio.InitializationOptions.androidAudioTrackCount
+  id: androidAudioTrackCount
+  parent: E7.Native.NativeAudio.InitializationOptions
+  langs:
+  - csharp
+  - vb
+  name: androidAudioTrackCount
+  nameWithType: NativeAudio.InitializationOptions.androidAudioTrackCount
+  fullName: E7.Native.NativeAudio.InitializationOptions.androidAudioTrackCount
+  type: Field
+  source:
+    id: androidAudioTrackCount
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/InitializationOptions.cs
+    startLine: 29
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nHow many native sources to request for Android. Default to 3 on <xref href=\"E7.Native.NativeAudio.InitializationOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref>.\nIt directly translates to maximum concurrency you can have while staying unmixed.\n\nPlease read [Problems on number of native sources](https://exceed7.com/native-audio/theories/ways-around-latency.html#problems-on-number-of-native-sources)\nif you would like to increase this and learn what risks you are getting into.\n"
+  example: []
+  syntax:
+    content: public int androidAudioTrackCount
+    return:
+      type: System.Int32
+    content.vb: Public androidAudioTrackCount As Integer
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeAudio.InitializationOptions.androidMinimumBufferSize
+  commentId: F:E7.Native.NativeAudio.InitializationOptions.androidMinimumBufferSize
+  id: androidMinimumBufferSize
+  parent: E7.Native.NativeAudio.InitializationOptions
+  langs:
+  - csharp
+  - vb
+  name: androidMinimumBufferSize
+  nameWithType: NativeAudio.InitializationOptions.androidMinimumBufferSize
+  fullName: E7.Native.NativeAudio.InitializationOptions.androidMinimumBufferSize
+  type: Field
+  source:
+    id: androidMinimumBufferSize
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/InitializationOptions.cs
+    startLine: 55
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n- If `-1`, it uses buffer size exactly equal to device&apos;s native buffer size.\n- Any number lower than device&apos;s native buffer size that is not `-1` will be \nclamped to device&apos;s native buffer size as the lowest possible.\n- Any number larger than device&apos;s native buffer size, you will **not** get exactly that specified buffer size.\nInstead, we increase from device buffer size by multiple of itself until over the specified size, \nthen you get that size. (Hence the name &quot;minimum&quot;)\n"
+  remarks: "\n[See the reason of the need to increase by multiple](https://developer.android.com/ndk/guides/audio/audio-latency#buffer-size).\n\nSmaller buffer size means better latency.\nTherefore -1 means it is the best latency-wise. (Will not modify the buffer size asked from the device)\n\nBut if you experiences audio glitches, it might be that the device could not write in time \nwhen the first buffer runs out of data, the &quot;buffer underrun&quot;. (Native Audio uses double buffering)\nThis might be because of device reports a buffer size too low for itself to handle.\nThis is in some Chinese phones apparently.\n\nExample : Specified `256`\n\n- Xperia Z5 : Native buffer size : 192 -> what you get : 384\n- Lenovo A..something : Native buffer size : 620 -> what you get : 620\n"
+  example: []
+  syntax:
+    content: public int androidMinimumBufferSize
+    return:
+      type: System.Int32
+    content.vb: Public androidMinimumBufferSize As Integer
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeAudio.InitializationOptions.preserveOnMinimize
+  commentId: F:E7.Native.NativeAudio.InitializationOptions.preserveOnMinimize
+  id: preserveOnMinimize
+  parent: E7.Native.NativeAudio.InitializationOptions
+  langs:
+  - csharp
+  - vb
+  name: preserveOnMinimize
+  nameWithType: NativeAudio.InitializationOptions.preserveOnMinimize
+  fullName: E7.Native.NativeAudio.InitializationOptions.preserveOnMinimize
+  type: Field
+  source:
+    id: preserveOnMinimize
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/InitializationOptions.cs
+    startLine: 94
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n[Android] \n- If `false` (default on <xref href=\"E7.Native.NativeAudio.InitializationOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref>), on <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref> the native side \nwill remember your request&apos;s spec. On minimize it will dispose all the sources \n(and in turn stopping them). On coming back it will reinitialize with the same spec.\n\n- If `true` the allocated native sources will not be freed when minimize the app. \n(The Unity ones do freed and request a new one on coming back) \n\n[iOS] No effect, iOS&apos;s native sources is already minimize-compatible \nbut its playing-when-minimized is prevented by the app&apos;s build option.\n"
+  remarks: "\n[Android]\n\nThis make it possible for audio played with Native Audio to play while minimizing the app, \nand also to not spend time disposing and allocating sources again.\n\nHowever this is not good since it adds &quot;wake lock&quot; to your game.\nWith `adb shell dumpsys power` while your game is minimized after using Native Audio \nyou will see something like ` PARTIAL_WAKE_LOCK &apos;AudioMix&apos; ACQ=-27s586ms(uid= 1041 ws= WorkSource{ 10331})`. \nMeaning that the OS have to keep the audio mix alive all the time.\nNot to mention most games do not really want this behaviour.\n\nMost gamers I saw also minimized the game and sometimes forgot to close them off.\nThis cause not only battery drain when there is a wake lock active, \nbut also when the lock turns into `LONG` state it will show up as a warning in Google Play Store, \nas it could detect that an app has a \n[Stuck partial wake lock](https://developer.android.com/topic/performance/vitals/wakelock) or not.\n\n[iOS]\n\nIf you want the audio to continue to be heard in minimize, \nuse &quot;Behaviour in background&quot; set as Custom - Audio in Unity Player Settings then\n[follow this thread](https://forum.unity.com/threads/how-do-i-get-the-audio-running-in-background-ios.319602/)\nto setup the `AVAudioSession` to correct settings.\n"
+  example: []
+  syntax:
+    content: public bool preserveOnMinimize
+    return:
+      type: System.Boolean
+    content.vb: Public preserveOnMinimize As Boolean
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  commentId: M:E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  isExternal: true
+- uid: E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  commentId: F:E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  isExternal: true
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: E7.Native.NativeAudio.InitializationOptions
+  commentId: T:E7.Native.NativeAudio.InitializationOptions
+  parent: E7.Native
+  name: NativeAudio.InitializationOptions
+  nameWithType: NativeAudio.InitializationOptions
+  fullName: E7.Native.NativeAudio.InitializationOptions
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: E7.Native.NativeAudio.Initialize
+  commentId: M:E7.Native.NativeAudio.Initialize
+  isExternal: true
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

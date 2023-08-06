@@ -1,0 +1,41 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.DeviceAudioInformation
+  commentId: T:E7.Native.DeviceAudioInformation
+  id: DeviceAudioInformation
+  parent: E7.Native
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: DeviceAudioInformation
+  nameWithType: DeviceAudioInformation
+  fullName: E7.Native.DeviceAudioInformation
+  type: Struct
+  source:
+    id: DeviceAudioInformation
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/DeviceAudioInformation.cs
+    startLine: 14
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nSeveral properties about the device asked from the native side that might help you.\nReturned from <xref href=\"E7.Native.NativeAudio.GetDeviceAudioInformation\" data-throw-if-not-resolved=\"false\"></xref>\n\nThe content of this `struct` changes completely depending on active build platform.\nYou will want to use a preprocessor directive wrapping it.\n"
+  example: []
+  syntax:
+    content: public struct DeviceAudioInformation
+    content.vb: Public Structure DeviceAudioInformation
+  modifiers.csharp:
+  - public
+  - struct
+  modifiers.vb:
+  - Public
+  - Structure
+references:
+- uid: E7.Native.NativeAudio.GetDeviceAudioInformation
+  commentId: M:E7.Native.NativeAudio.GetDeviceAudioInformation
+  isExternal: true
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native

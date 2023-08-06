@@ -1,0 +1,643 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeSource
+  commentId: T:E7.Native.NativeSource
+  id: NativeSource
+  parent: E7.Native
+  children:
+  - E7.Native.NativeSource.GetPlaybackTime
+  - E7.Native.NativeSource.Index
+  - E7.Native.NativeSource.IsValid
+  - E7.Native.NativeSource.Pause
+  - E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  - E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  - E7.Native.NativeSource.PlayPrepared
+  - E7.Native.NativeSource.PlayPrepared(E7.Native.NativeSource.PlayOptions)
+  - E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)
+  - E7.Native.NativeSource.Resume
+  - E7.Native.NativeSource.SetPan(System.Single)
+  - E7.Native.NativeSource.SetPlaybackTime(System.Single)
+  - E7.Native.NativeSource.SetVolume(System.Single)
+  - E7.Native.NativeSource.Stop
+  langs:
+  - csharp
+  - vb
+  name: NativeSource
+  nameWithType: NativeSource
+  fullName: E7.Native.NativeSource
+  type: Struct
+  source:
+    id: NativeSource
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 8
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThis is a referece to one of all native sources you obtained at <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref>.\nParallels <xref href=\"UnityEngine.AudioSource\" data-throw-if-not-resolved=\"false\"></xref> of Unity except they are at native side, you play an audio using it.\n\nMain way to get this is by <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>, \n<xref href=\"E7.Native.NativeAudio.GetNativeSourceAuto\" data-throw-if-not-resolved=\"false\"></xref>, or <xref href=\"E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public struct NativeSource
+    content.vb: Public Structure NativeSource
+  modifiers.csharp:
+  - public
+  - struct
+  modifiers.vb:
+  - Public
+  - Structure
+- uid: E7.Native.NativeSource.IsValid
+  commentId: P:E7.Native.NativeSource.IsValid
+  id: IsValid
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: IsValid
+  nameWithType: NativeSource.IsValid
+  fullName: E7.Native.NativeSource.IsValid
+  type: Property
+  source:
+    id: IsValid
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 22
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThis is used to separate a `struct` returned from Native Audio&apos;s <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref> method\nfrom a default `struct`. (A trick to make `struct` kinda nullable.)\n"
+  example: []
+  syntax:
+    content: public bool IsValid { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsValid As Boolean
+  overload: E7.Native.NativeSource.IsValid*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: E7.Native.NativeSource.Index
+  commentId: P:E7.Native.NativeSource.Index
+  id: Index
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Index
+  nameWithType: NativeSource.Index
+  fullName: E7.Native.NativeSource.Index
+  type: Property
+  source:
+    id: Index
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 28
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nIt&apos;s like an ID of this native source. This is zero-indexed of how many native sources you get at <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref>\nIf you initialize 3 native sources, then this could be 0, 1, or 2.\n"
+  example: []
+  syntax:
+    content: public int Index { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Index As Integer
+  overload: E7.Native.NativeSource.Index*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: E7.Native.NativeSource.Stop
+  commentId: M:E7.Native.NativeSource.Stop
+  id: Stop
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: NativeSource.Stop()
+  fullName: E7.Native.NativeSource.Stop()
+  type: Method
+  source:
+    id: Stop
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 53
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nImmediately stop this native source. If it was playing an audio then effectively it stops the audio.\n"
+  remarks: "\n[iOS] One of all OpenAL sources that was used to play this sound will stop.\n\n[Android] One of all SLAndroidSimpleBufferQueue that was used to play this sound will stop.\n"
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub Stop
+  overload: E7.Native.NativeSource.Stop*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.SetVolume(System.Single)
+  commentId: M:E7.Native.NativeSource.SetVolume(System.Single)
+  id: SetVolume(System.Single)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: SetVolume(Single)
+  nameWithType: NativeSource.SetVolume(Single)
+  fullName: E7.Native.NativeSource.SetVolume(System.Single)
+  type: Method
+  source:
+    id: SetVolume
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 73
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nChange the volume of native source while it is playing.\n"
+  remarks: "\n[iOS] Maps to `AL_GAIN`. It is a scalar amplitude multiplier, so the value can go over 1.0 for increasing volume but can be clipped. \nIf you put 0.5f, it is attenuated by 6 dB.\n\n[Android] Maps to `SLVolumeItf` interface -> `SetVolumeLevel`.\nThe floating volume parameter will be converted to millibel (20xlog10x100) so that putting 0.5f here results in 6dB attenuation.\n"
+  example: []
+  syntax:
+    content: public void SetVolume(float volume)
+    parameters:
+    - id: volume
+      type: System.Single
+    content.vb: Public Sub SetVolume(volume As Single)
+  overload: E7.Native.NativeSource.SetVolume*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.SetPan(System.Single)
+  commentId: M:E7.Native.NativeSource.SetPan(System.Single)
+  id: SetPan(System.Single)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: SetPan(Single)
+  nameWithType: NativeSource.SetPan(Single)
+  fullName: E7.Native.NativeSource.SetPan(System.Single)
+  type: Method
+  source:
+    id: SetPan
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 98
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThis pan is based on &quot;balance effect&quot; and not a &quot;constant energy pan&quot;. That is\nat the center you hear each side fully. (Constant energy pan has 3dB attenuation to both on center.)\n"
+  remarks: "\n[iOS] 2D panning in iOS will be emulated in OpenAL&apos;s 3D audio engine by splitting your stereo sound into a separated mono sounds, \nthen position each one on left and right ear of the listener. When panning, instead of adjusting gain we will just move the source \nfurther from the listener and the distance attenuation will do the work. (Gain is reserved to the setting volume command, \nso we have 2 stage of gain adjustment this way.\n\n[Android] Maps to SLVolumeItf interface -> SetStereoPosition\n"
+  example: []
+  syntax:
+    content: public void SetPan(float pan)
+    parameters:
+    - id: pan
+      type: System.Single
+      description: "\n-1 for full left, 0 for center, 1 for full right. \n"
+    content.vb: Public Sub SetPan(pan As Single)
+  overload: E7.Native.NativeSource.SetPan*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.GetPlaybackTime
+  commentId: M:E7.Native.NativeSource.GetPlaybackTime
+  id: GetPlaybackTime
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: GetPlaybackTime()
+  nameWithType: NativeSource.GetPlaybackTime()
+  fullName: E7.Native.NativeSource.GetPlaybackTime()
+  type: Method
+  source:
+    id: GetPlaybackTime
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 137
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nReturn the current playback time of this native source.\nIt is relative to the start of audio data currently playing on the source in **seconds**.\n"
+  remarks: "\nThe API is very time sensitive and may or may not change the value in the same frame. \n(depending on where you call it in the script)\n\nThis behaviour is similar to when calling <xref href=\"UnityEngine.AudioSettings.dspTime\" data-throw-if-not-resolved=\"false\"></xref> \nor <xref href=\"UnityEngine.AudioSource.time\" data-throw-if-not-resolved=\"false\"></xref> property, those two are in the same update step.\n\nNote that <xref href=\"UnityEngine.Time.realtimeSinceStartup\" data-throw-if-not-resolved=\"false\"></xref> is not in an update step unlike audio time, \nand will change every time you call even in 2 consecutive lines of code.\n\nA looping audio played by <xref href=\"E7.Native.NativeSource.PlayOptions.sourceLoop\" data-throw-if-not-resolved=\"false\"></xref> has a playback time resets to 0 everytime a new loop arrives.\n\n[iOS] Get `AL_SEC_OFFSET` attribute. It update in a certain discrete step, and if that step happen in the middle of\nthe frame this method will return different value depending on where in the script you call it. The update step timing is THE SAME as \n<xref href=\"UnityEngine.AudioSettings.dspTime\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"UnityEngine.AudioSource.time\" data-throw-if-not-resolved=\"false\"></xref>.\n\nI observed (in iPad 3, iOS 9) that this function sometimes lags on first few calls.\nIt might help to pre-warm by calling this several times in loading screen or something.\n\n[Android] Use `GetPosition` of `SLPlayItf` interface. It update in a certain discrete step, and if that step happen in the middle of\nthe frame this method will return different value depending on where in the script you call it. The update step timing is INDEPENDENT from\n<xref href=\"UnityEngine.AudioSettings.dspTime\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"UnityEngine.AudioSource.time\" data-throw-if-not-resolved=\"false\"></xref>.\n\nBecause of how &quot;stop hack&quot; was implemented, any stopped audio will have a playback time equals to audio&apos;s length (not 0)\n"
+  example: []
+  syntax:
+    content: public float GetPlaybackTime()
+    return:
+      type: System.Single
+    content.vb: Public Function GetPlaybackTime As Single
+  overload: E7.Native.NativeSource.GetPlaybackTime*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.SetPlaybackTime(System.Single)
+  commentId: M:E7.Native.NativeSource.SetPlaybackTime(System.Single)
+  id: SetPlaybackTime(System.Single)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: SetPlaybackTime(Single)
+  nameWithType: NativeSource.SetPlaybackTime(Single)
+  fullName: E7.Native.NativeSource.SetPlaybackTime(System.Single)
+  type: Method
+  source:
+    id: SetPlaybackTime
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 154
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nSet a playback time of this native source. If the source is in a paused state it is immediately resumed.\nYou can set it even while the native source is playing.\n"
+  example: []
+  syntax:
+    content: public void SetPlaybackTime(float offsetSeconds)
+    parameters:
+    - id: offsetSeconds
+      type: System.Single
+      description: ''
+    content.vb: Public Sub SetPlaybackTime(offsetSeconds As Single)
+  overload: E7.Native.NativeSource.SetPlaybackTime*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.Pause
+  commentId: M:E7.Native.NativeSource.Pause
+  id: Pause
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Pause()
+  nameWithType: NativeSource.Pause()
+  fullName: E7.Native.NativeSource.Pause()
+  type: Method
+  source:
+    id: Pause
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 170
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nPause this native source.\n\nThe source is not protected against being chosen for other audio while pausing, \nand if that happens the pause status will be cleared out.\n"
+  example: []
+  syntax:
+    content: public void Pause()
+    content.vb: Public Sub Pause
+  overload: E7.Native.NativeSource.Pause*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.Resume
+  commentId: M:E7.Native.NativeSource.Resume
+  id: Resume
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Resume()
+  nameWithType: NativeSource.Resume()
+  fullName: E7.Native.NativeSource.Resume()
+  type: Method
+  source:
+    id: Resume
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 186
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nResume this native source.\n\nIf by the time you call resume the source has already been used to play other audio, \nthe resume will have no effect since the pause status had already been clreared out.\n"
+  example: []
+  syntax:
+    content: public void Resume()
+    content.vb: Public Sub Resume
+  overload: E7.Native.NativeSource.Resume*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  id: Play(E7.Native.NativeAudioPointer)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Play(NativeAudioPointer)
+  nameWithType: NativeSource.Play(NativeAudioPointer)
+  fullName: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  type: Method
+  source:
+    id: Play
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 200
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nA native source will play an audio using loaded audio memory at native side, specified by <code data-dev-comment-type=\"paramref\" class=\"paramref\">nativeAudioPointer</code>.\n"
+  example: []
+  syntax:
+    content: public void Play(NativeAudioPointer nativeAudioPointer)
+    parameters:
+    - id: nativeAudioPointer
+      type: E7.Native.NativeAudioPointer
+    content.vb: Public Sub Play(nativeAudioPointer As NativeAudioPointer)
+  overload: E7.Native.NativeSource.Play*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when you attempt to play an unloaded audio.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  id: Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Play(NativeAudioPointer, NativeSource.PlayOptions)
+  nameWithType: NativeSource.Play(NativeAudioPointer, NativeSource.PlayOptions)
+  fullName: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer, E7.Native.NativeSource.PlayOptions)
+  type: Method
+  source:
+    id: Play
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 210
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nA native source will play an audio using loaded audio memory at native side, specified by <code data-dev-comment-type=\"paramref\" class=\"paramref\">nativeAudioPointer</code>.\n"
+  example: []
+  syntax:
+    content: public void Play(NativeAudioPointer nativeAudioPointer, NativeSource.PlayOptions playOptions)
+    parameters:
+    - id: nativeAudioPointer
+      type: E7.Native.NativeAudioPointer
+    - id: playOptions
+      type: E7.Native.NativeSource.PlayOptions
+      description: Customize your play. Begin creating the option from <xref href="E7.Native.NativeSource.PlayOptions.defaultOptions" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Sub Play(nativeAudioPointer As NativeAudioPointer, playOptions As NativeSource.PlayOptions)
+  overload: E7.Native.NativeSource.Play*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when you attempt to play an unloaded audio.
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)
+  commentId: M:E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)
+  id: Prepare(E7.Native.NativeAudioPointer)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: Prepare(NativeAudioPointer)
+  nameWithType: NativeSource.Prepare(NativeAudioPointer)
+  fullName: E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)
+  type: Method
+  source:
+    id: Prepare
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 253
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n(**EXPERIMENTAL**) Try to make the next <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref> faster by pre-associating\nthe pointer to this native source. Whether if this is possible or not depends on platform.\n\nTo &quot;fire&quot; the prepared audio, use the parameterless play <xref href=\"E7.Native.NativeSource.PlayPrepared\" data-throw-if-not-resolved=\"false\"></xref> method.\n\nNot recommended to care about this generally, because the gain could be next to nothing for hassle you get.\nBut it is a method stub for the future where there maybe a significant optimization in doing so.\n\n[iOS] Implemented, but likely negligible.. \n(didn&apos;t profile extensively yet, but theoretically there is something to prepare here.)\n\n[Android] Not implemented, no effect.\n"
+  remarks: "\n[iOS] Normally on <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref> OpenAL will \n\n1. Choose a source at native side, depending on your <xref href=\"E7.Native.NativeSource.PlayOptions\" data-throw-if-not-resolved=\"false\"></xref> \nwhen using <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer%2cE7.Native.NativeSource.PlayOptions)\" data-throw-if-not-resolved=\"false\"></xref> if manually. \nOr automatically round-robin without options.\n2. Stop that source, and then assign a new audio buffer to it.\n3. Play that source.\n\nPreparing make it do 1. and 2. preemptively. Then <xref href=\"E7.Native.NativeSource.PlayPrepared\" data-throw-if-not-resolved=\"false\"></xref> performs 3. &quot;blindly&quot;\nwithout caring about the current audio. If you didn&apos;t wait too long, the preparation should be usable.\n\n[Android] No effect as OpenSL ES play audio by pushing data into `SLAndroidSimpleBufferQueueItf`.\nAll the prepare is already at the <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref>. I cannot find any other way\nto pre-speeding this up.\n"
+  example: []
+  syntax:
+    content: public void Prepare(NativeAudioPointer nativeAudioPointer)
+    parameters:
+    - id: nativeAudioPointer
+      type: E7.Native.NativeAudioPointer
+      description: An audio to prepare into this native source.
+    content.vb: Public Sub Prepare(nativeAudioPointer As NativeAudioPointer)
+  overload: E7.Native.NativeSource.Prepare*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.PlayPrepared
+  commentId: M:E7.Native.NativeSource.PlayPrepared
+  id: PlayPrepared
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: PlayPrepared()
+  nameWithType: NativeSource.PlayPrepared()
+  fullName: E7.Native.NativeSource.PlayPrepared()
+  type: Method
+  source:
+    id: PlayPrepared
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 278
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n(**EXPERIMENTAL**)\nPlay the audio &quot;blindly&quot; without <xref href=\"E7.Native.NativeAudioPointer\" data-throw-if-not-resolved=\"false\"></xref>, \nbut **believing** that the prepared audio at <xref href=\"E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref> is still\nassociated with this native source. \nIf successful, the play could be potentially faster depending on platforms.\n\nIf you waited too long and the native source has already been used with other audio, this may produce unexpected\nresult such as repeating an audio you were not expecting when you prepared. With careful native source\nplanning, you can know that this will or will not happen.\n\n[iOS] Use this after <xref href=\"E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref>.\n\n[Android] No effect, Android has no prepare implemented yet.\n"
+  example: []
+  syntax:
+    content: public void PlayPrepared()
+    content.vb: Public Sub PlayPrepared
+  overload: E7.Native.NativeSource.PlayPrepared*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.PlayPrepared(E7.Native.NativeSource.PlayOptions)
+  commentId: M:E7.Native.NativeSource.PlayPrepared(E7.Native.NativeSource.PlayOptions)
+  id: PlayPrepared(E7.Native.NativeSource.PlayOptions)
+  parent: E7.Native.NativeSource
+  langs:
+  - csharp
+  - vb
+  name: PlayPrepared(NativeSource.PlayOptions)
+  nameWithType: NativeSource.PlayPrepared(NativeSource.PlayOptions)
+  fullName: E7.Native.NativeSource.PlayPrepared(E7.Native.NativeSource.PlayOptions)
+  type: Method
+  source:
+    id: PlayPrepared
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeSource.cs
+    startLine: 298
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n(**EXPERIMENTAL**)\nPlay the audio &quot;blindly&quot; without <xref href=\"E7.Native.NativeAudioPointer\" data-throw-if-not-resolved=\"false\"></xref>, \nbut **believing** that the prepared audio at <xref href=\"E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref> is still\nassociated with this native source. \nIf successful, the play could be potentially faster depending on platforms.\n\nIf you waited too long and the native source has already been used with other audio, this may produce unexpected\nresult such as repeating an audio you were not expecting when you prepared. With careful native source\nplanning, you can know that this will or will not happen.\n\n[iOS] Use this after <xref href=\"E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref>.\n\n[Android] No effect, Android has no prepare implemented yet.\n"
+  example: []
+  syntax:
+    content: public void PlayPrepared(NativeSource.PlayOptions playOptions)
+    parameters:
+    - id: playOptions
+      type: E7.Native.NativeSource.PlayOptions
+    content.vb: Public Sub PlayPrepared(playOptions As NativeSource.PlayOptions)
+  overload: E7.Native.NativeSource.PlayPrepared*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native.NativeAudio.Initialize
+  commentId: M:E7.Native.NativeAudio.Initialize
+  isExternal: true
+- uid: UnityEngine.AudioSource
+  commentId: T:UnityEngine.AudioSource
+  isExternal: true
+- uid: E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  commentId: M:E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  isExternal: true
+- uid: E7.Native.NativeAudio.GetNativeSourceAuto
+  commentId: M:E7.Native.NativeAudio.GetNativeSourceAuto
+  isExternal: true
+- uid: E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  commentId: M:E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  isExternal: true
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: E7.Native.NativeSource.IsValid*
+  commentId: Overload:E7.Native.NativeSource.IsValid
+  name: IsValid
+  nameWithType: NativeSource.IsValid
+  fullName: E7.Native.NativeSource.IsValid
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: E7.Native.NativeSource.Index*
+  commentId: Overload:E7.Native.NativeSource.Index
+  name: Index
+  nameWithType: NativeSource.Index
+  fullName: E7.Native.NativeSource.Index
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: E7.Native.NativeSource.Stop*
+  commentId: Overload:E7.Native.NativeSource.Stop
+  name: Stop
+  nameWithType: NativeSource.Stop
+  fullName: E7.Native.NativeSource.Stop
+- uid: E7.Native.NativeSource.SetVolume*
+  commentId: Overload:E7.Native.NativeSource.SetVolume
+  name: SetVolume
+  nameWithType: NativeSource.SetVolume
+  fullName: E7.Native.NativeSource.SetVolume
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: E7.Native.NativeSource.SetPan*
+  commentId: Overload:E7.Native.NativeSource.SetPan
+  name: SetPan
+  nameWithType: NativeSource.SetPan
+  fullName: E7.Native.NativeSource.SetPan
+- uid: UnityEngine.AudioSettings.dspTime
+  commentId: P:UnityEngine.AudioSettings.dspTime
+  isExternal: true
+- uid: UnityEngine.AudioSource.time
+  commentId: P:UnityEngine.AudioSource.time
+  isExternal: true
+- uid: UnityEngine.Time.realtimeSinceStartup
+  commentId: P:UnityEngine.Time.realtimeSinceStartup
+  isExternal: true
+- uid: E7.Native.NativeSource.PlayOptions.sourceLoop
+  commentId: F:E7.Native.NativeSource.PlayOptions.sourceLoop
+  isExternal: true
+- uid: E7.Native.NativeSource.GetPlaybackTime*
+  commentId: Overload:E7.Native.NativeSource.GetPlaybackTime
+  name: GetPlaybackTime
+  nameWithType: NativeSource.GetPlaybackTime
+  fullName: E7.Native.NativeSource.GetPlaybackTime
+- uid: E7.Native.NativeSource.SetPlaybackTime*
+  commentId: Overload:E7.Native.NativeSource.SetPlaybackTime
+  name: SetPlaybackTime
+  nameWithType: NativeSource.SetPlaybackTime
+  fullName: E7.Native.NativeSource.SetPlaybackTime
+- uid: E7.Native.NativeSource.Pause*
+  commentId: Overload:E7.Native.NativeSource.Pause
+  name: Pause
+  nameWithType: NativeSource.Pause
+  fullName: E7.Native.NativeSource.Pause
+- uid: E7.Native.NativeSource.Resume*
+  commentId: Overload:E7.Native.NativeSource.Resume
+  name: Resume
+  nameWithType: NativeSource.Resume
+  fullName: E7.Native.NativeSource.Resume
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+- uid: E7.Native.NativeSource.Play*
+  commentId: Overload:E7.Native.NativeSource.Play
+  name: Play
+  nameWithType: NativeSource.Play
+  fullName: E7.Native.NativeSource.Play
+- uid: E7.Native.NativeAudioPointer
+  commentId: T:E7.Native.NativeAudioPointer
+  parent: E7.Native
+  name: NativeAudioPointer
+  nameWithType: NativeAudioPointer
+  fullName: E7.Native.NativeAudioPointer
+- uid: E7.Native.NativeSource.PlayOptions.defaultOptions
+  commentId: F:E7.Native.NativeSource.PlayOptions.defaultOptions
+  isExternal: true
+- uid: E7.Native.NativeSource.PlayOptions
+  commentId: T:E7.Native.NativeSource.PlayOptions
+  parent: E7.Native
+  name: NativeSource.PlayOptions
+  nameWithType: NativeSource.PlayOptions
+  fullName: E7.Native.NativeSource.PlayOptions
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  isExternal: true
+- uid: E7.Native.NativeSource.PlayPrepared
+  commentId: M:E7.Native.NativeSource.PlayPrepared
+  isExternal: true
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  isExternal: true
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  isExternal: true
+- uid: E7.Native.NativeSource.Prepare*
+  commentId: Overload:E7.Native.NativeSource.Prepare
+  name: Prepare
+  nameWithType: NativeSource.Prepare
+  fullName: E7.Native.NativeSource.Prepare
+- uid: E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)
+  commentId: M:E7.Native.NativeSource.Prepare(E7.Native.NativeAudioPointer)
+  isExternal: true
+- uid: E7.Native.NativeSource.PlayPrepared*
+  commentId: Overload:E7.Native.NativeSource.PlayPrepared
+  name: PlayPrepared
+  nameWithType: NativeSource.PlayPrepared
+  fullName: E7.Native.NativeSource.PlayPrepared

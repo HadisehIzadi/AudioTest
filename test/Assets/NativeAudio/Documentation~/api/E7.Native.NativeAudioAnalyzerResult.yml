@@ -1,0 +1,91 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudioAnalyzerResult
+  commentId: T:E7.Native.NativeAudioAnalyzerResult
+  id: NativeAudioAnalyzerResult
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudioAnalyzerResult.averageFps
+  langs:
+  - csharp
+  - vb
+  name: NativeAudioAnalyzerResult
+  nameWithType: NativeAudioAnalyzerResult
+  fullName: E7.Native.NativeAudioAnalyzerResult
+  type: Class
+  source:
+    id: NativeAudioAnalyzerResult
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 15
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nResult from running <xref href=\"E7.Native.NativeAudioAnalyzer.Analyze\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public class NativeAudioAnalyzerResult
+    content.vb: Public Class NativeAudioAnalyzerResult
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: E7.Native.NativeAudioAnalyzerResult.averageFps
+  commentId: F:E7.Native.NativeAudioAnalyzerResult.averageFps
+  id: averageFps
+  parent: E7.Native.NativeAudioAnalyzerResult
+  langs:
+  - csharp
+  - vb
+  name: averageFps
+  nameWithType: NativeAudioAnalyzerResult.averageFps
+  fullName: E7.Native.NativeAudioAnalyzerResult.averageFps
+  type: Field
+  source:
+    id: averageFps
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 17
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  syntax:
+    content: public float averageFps
+    return:
+      type: System.Single
+    content.vb: Public averageFps As Single
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native.NativeAudioAnalyzer.Analyze
+  commentId: M:E7.Native.NativeAudioAnalyzer.Analyze
+  isExternal: true
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single

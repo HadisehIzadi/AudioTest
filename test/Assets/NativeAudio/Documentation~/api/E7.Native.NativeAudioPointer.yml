@@ -1,0 +1,221 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudioPointer
+  commentId: T:E7.Native.NativeAudioPointer
+  id: NativeAudioPointer
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudioPointer.Length
+  - E7.Native.NativeAudioPointer.ToString
+  - E7.Native.NativeAudioPointer.Unload
+  langs:
+  - csharp
+  - vb
+  name: NativeAudioPointer
+  nameWithType: NativeAudioPointer
+  fullName: E7.Native.NativeAudioPointer
+  type: Class
+  source:
+    id: NativeAudioPointer
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioPointer.cs
+    startLine: 19
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nA representation of loaded audio memory at the native side.\n\nWhen you <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref> it is copying audio memory to native side. Each memory area\nof loaded audio is given an ID. This &quot;pointer&quot; is not really a &quot;memory address pointer&quot; like in C++, but just\nthe mentioned ID. Just a simple integer.\n\nPlease do not create an instance of this class on your own. You can only get and keep from calling\n<xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+  example: []
+  syntax:
+    content: public class NativeAudioPointer
+    content.vb: Public Class NativeAudioPointer
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: E7.Native.NativeAudioPointer.Length
+  commentId: P:E7.Native.NativeAudioPointer.Length
+  id: Length
+  parent: E7.Native.NativeAudioPointer
+  langs:
+  - csharp
+  - vb
+  name: Length
+  nameWithType: NativeAudioPointer.Length
+  fullName: E7.Native.NativeAudioPointer.Length
+  type: Property
+  source:
+    id: Length
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioPointer.cs
+    startLine: 35
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n**Cached** length in **seconds** of a loaded audio calculated from PCM byte size and specifications.\n"
+  example: []
+  syntax:
+    content: public float Length { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property Length As Single
+  overload: E7.Native.NativeAudioPointer.Length*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: E7.Native.NativeAudioPointer.ToString
+  commentId: M:E7.Native.NativeAudioPointer.ToString
+  id: ToString
+  parent: E7.Native.NativeAudioPointer
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: NativeAudioPointer.ToString()
+  fullName: E7.Native.NativeAudioPointer.ToString()
+  type: Method
+  source:
+    id: ToString
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioPointer.cs
+    startLine: 80
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: E7.Native.NativeAudioPointer.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: E7.Native.NativeAudioPointer.Unload
+  commentId: M:E7.Native.NativeAudioPointer.Unload
+  id: Unload
+  parent: E7.Native.NativeAudioPointer
+  langs:
+  - csharp
+  - vb
+  name: Unload()
+  nameWithType: NativeAudioPointer.Unload()
+  fullName: E7.Native.NativeAudioPointer.Unload()
+  type: Method
+  source:
+    id: Unload
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioPointer.cs
+    startLine: 161
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nFree up loaded audio memory.\nYou cannot call <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref> using this pointer anymore after unloading. \nIt will throw an exception.\n\n**THIS METHOD IS UNSAFE ON ANDROID.** Read remarks and use with care!\n"
+  remarks: "\n[iOS] Unloads OpenAL audio buffer. If some native sources are currently playing\naudio memory that you just unload, those tracks will be stopped automatically.\n\n[Android] `free` the unmanaged audio data array at native side instantly.\n\nThis memory freeing could cause segmentation fault (SIGSEGV) if there are audio tracks currently playing the memory.\nYou have to make sure by yourself there is no native source playing this audio before unloading.\n\nOn some higher-end phones, it will not crash but instead you will hear loud glitched audio.\nThis is the sound of playhead running over freed memory and it interprets those as\nsound instead of crashing.\n\nBelow is the details why this method was not made less dangerous.\n\nSo the correct approach should be like this : we have to find out who is using the audio.\nThere could be multiple users playing a single audio memory. And then stop them all before freeing memory, ideally.\n\nHowever my native implementation for the best latency is to never stop any source, because\nstarting one again cause problems on some phones.\nThe callbacks are always running. We can&apos;t stop, won&apos;t stop.\n\nThe next idea is to let the callback know that it is not good to continue, by setting some kind\nof &quot;unloaded&quot; flag for each audio on unloading. Then we free the memory immediately as before.\n\nHowever, those callbacks are on a separated thread. It might be in the middle of copying\naudio, and already pass the check we want to do to prevent the copy. Communication by flagging is possible\nbut it may be too late. This is what results in `memcpy` crash in your SIGSEGV crash report.\n\nHow about unloading NOT unload the audio instantly when you call unload,\nbut allowing all the playing sources that are using that audio to play this audio memory til the end.\nat the same time prevents any new user. Then when all current tracks finished, unload at that moment.\n(By keeping a play count of sorts similar to garbage collection, when reduced to zero while unload flag\nis true, release the resource.)\n\nUnfortunately again, this means we have to add `if` conditional to the callback function. So it could\ndecide should it free memory or not.\nThis callback function runs every little audio buffer that will be sent out your speaker, so it is a very\nhot code path. Performance is very important especially considering the point of Native Audio.\n\nFor better assembly code, I have optimized very hard to elimiate all `if`, to reduce the need of branch prediction for CPU.\nAnd I couldn&apos;t bring myself to add back an `if` that the whole point is just to protect \nfrom SIGSEGV potential from unloading, an operation that\nis 1% rare when compared to how many times we play the audio, which triggers the callback over and over.\n\nAnd what&apos;s more, you could prevent the crash manually 100% by just stopping the source you know are \nplaying that audio before unloading. Waiting a moment for all audio to finish before unloading is an option too.\nI choose this manual work over automatic protection for rare case by adding something to a hot code path.\n\nFinally, what I settled with is that unloading **could cause SIGSEGV by design**, and it is an unsafe method. I won&apos;t fix it.\nSorry that it doesn&apos;t look polished but it&apos;s all for better latency, the whole point of Native Audio.\nI will do whatever it takes to get to the enqueue buffer call faster in that callback method.\n\nWhat you have to do is just to be careful not to unload while someone is playing that audio by yourself.\nThe code can&apos;t help you since the check would be expensive.\n\nOne last warning, if you <xref href=\"E7.Native.NativeSource.Stop\" data-throw-if-not-resolved=\"false\"></xref>\nthen immediately <xref href=\"E7.Native.NativeAudioPointer.Unload\" data-throw-if-not-resolved=\"false\"></xref> on the next line of code, \nit is actually not 100% safe.\n\nThe thing that keeps pumping audio to the speaker runs on thread, by callbacks that runs on themselves over and over.\nBut stopping is issued on the main thread. It is basically just setting some flags so that the next time that audio thread came, \nit stops putting out any more audio. However by the nature of thread it will be concurrent with your main thread. \n\nSo for example this situation : if the stop runs, the thread had already pass the check for stop and is putting out audio, \nthen you call unload, then you get SIGSEGV because it is putting out freed memory. \n\nSo stop and give it a few frames before unloading to be safe.\n"
+  example: []
+  syntax:
+    content: public void Unload()
+    content.vb: Public Sub Unload
+  overload: E7.Native.NativeAudioPointer.Unload*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  isExternal: true
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: E7.Native.NativeAudioPointer.Length*
+  commentId: Overload:E7.Native.NativeAudioPointer.Length
+  name: Length
+  nameWithType: NativeAudioPointer.Length
+  fullName: E7.Native.NativeAudioPointer.Length
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: E7.Native.NativeAudioPointer.ToString*
+  commentId: Overload:E7.Native.NativeAudioPointer.ToString
+  name: ToString
+  nameWithType: NativeAudioPointer.ToString
+  fullName: E7.Native.NativeAudioPointer.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  isExternal: true
+- uid: E7.Native.NativeSource.Stop
+  commentId: M:E7.Native.NativeSource.Stop
+  isExternal: true
+- uid: E7.Native.NativeAudioPointer.Unload
+  commentId: M:E7.Native.NativeAudioPointer.Unload
+  isExternal: true
+- uid: E7.Native.NativeAudioPointer.Unload*
+  commentId: Overload:E7.Native.NativeAudioPointer.Unload
+  name: Unload
+  nameWithType: NativeAudioPointer.Unload
+  fullName: E7.Native.NativeAudioPointer.Unload

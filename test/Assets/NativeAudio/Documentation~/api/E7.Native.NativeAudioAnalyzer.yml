@@ -1,0 +1,372 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudioAnalyzer
+  commentId: T:E7.Native.NativeAudioAnalyzer
+  id: NativeAudioAnalyzer
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudioAnalyzer.allTicks
+  - E7.Native.NativeAudioAnalyzer.AnalysisResult
+  - E7.Native.NativeAudioAnalyzer.Analyze
+  - E7.Native.NativeAudioAnalyzer.Analyzed
+  - E7.Native.NativeAudioAnalyzer.Finish
+  langs:
+  - csharp
+  - vb
+  name: NativeAudioAnalyzer
+  nameWithType: NativeAudioAnalyzer
+  fullName: E7.Native.NativeAudioAnalyzer
+  type: Class
+  source:
+    id: NativeAudioAnalyzer
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 23
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThe game object with this component is able to test native audio over several frames.\n"
+  example: []
+  syntax:
+    content: 'public class NativeAudioAnalyzer : MonoBehaviour'
+    content.vb: >-
+      Public Class NativeAudioAnalyzer
+          Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.Component
+  - UnityEngine.Behaviour
+  - UnityEngine.MonoBehaviour
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: E7.Native.NativeAudioAnalyzer.Analyzed
+  commentId: P:E7.Native.NativeAudioAnalyzer.Analyzed
+  id: Analyzed
+  parent: E7.Native.NativeAudioAnalyzer
+  langs:
+  - csharp
+  - vb
+  name: Analyzed
+  nameWithType: NativeAudioAnalyzer.Analyzed
+  fullName: E7.Native.NativeAudioAnalyzer.Analyzed
+  type: Property
+  source:
+    id: Analyzed
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 32
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nYou can wait for the result on this. Then after it is done, `AnalysisResult` contains the result. If not, that variable is `null`.\n\nIf your game is in a yieldable routine, use `yield return new WaitUntil( () => analyzer.Analyzed );&apos;\n\nIf not, you can do a blocking wait with a `while` loop on `analyzer.Analyzed == false`.\n"
+  example: []
+  syntax:
+    content: public bool Analyzed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Analyzed As Boolean
+  overload: E7.Native.NativeAudioAnalyzer.Analyzed*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: E7.Native.NativeAudioAnalyzer.AnalysisResult
+  commentId: P:E7.Native.NativeAudioAnalyzer.AnalysisResult
+  id: AnalysisResult
+  parent: E7.Native.NativeAudioAnalyzer
+  langs:
+  - csharp
+  - vb
+  name: AnalysisResult
+  nameWithType: NativeAudioAnalyzer.AnalysisResult
+  fullName: E7.Native.NativeAudioAnalyzer.AnalysisResult
+  type: Property
+  source:
+    id: AnalysisResult
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 39
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nAccess this property after `Analyzed` property became true.\n"
+  example: []
+  syntax:
+    content: public NativeAudioAnalyzerResult AnalysisResult { get; }
+    parameters: []
+    return:
+      type: E7.Native.NativeAudioAnalyzerResult
+    content.vb: Public ReadOnly Property AnalysisResult As NativeAudioAnalyzerResult
+  overload: E7.Native.NativeAudioAnalyzer.AnalysisResult*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: E7.Native.NativeAudioAnalyzer.allTicks
+  commentId: F:E7.Native.NativeAudioAnalyzer.allTicks
+  id: allTicks
+  parent: E7.Native.NativeAudioAnalyzer
+  langs:
+  - csharp
+  - vb
+  name: allTicks
+  nameWithType: NativeAudioAnalyzer.allTicks
+  fullName: E7.Native.NativeAudioAnalyzer.allTicks
+  type: Field
+  source:
+    id: allTicks
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 54
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  syntax:
+    content: public List<long> allTicks
+    return:
+      type: System.Collections.Generic.List{System.Int64}
+    content.vb: Public allTicks As List(Of Long)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeAudioAnalyzer.Analyze
+  commentId: M:E7.Native.NativeAudioAnalyzer.Analyze
+  id: Analyze
+  parent: E7.Native.NativeAudioAnalyzer
+  langs:
+  - csharp
+  - vb
+  name: Analyze()
+  nameWithType: NativeAudioAnalyzer.Analyze()
+  fullName: E7.Native.NativeAudioAnalyzer.Analyze()
+  type: Method
+  source:
+    id: Analyze
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 83
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThis is already called from <xref href=\"E7.Native.NativeAudio.SilentAnalyze\" data-throw-if-not-resolved=\"false\"></xref>\nBut you can do it again if you want, it might return a new result who knows...\n\nYou can wait on the public property `Analyzed`\n\nIf your game is in a yieldable routine, use `yield return new WaitUntil( () => analyzer.Analyzed );&apos;\n\nIf not, you can do a blocking wait with a `while` loop on `analyzer.Analyzed == false`.\n"
+  example: []
+  syntax:
+    content: public void Analyze()
+    content.vb: Public Sub Analyze
+  overload: E7.Native.NativeAudioAnalyzer.Analyze*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeAudioAnalyzer.Finish
+  commentId: M:E7.Native.NativeAudioAnalyzer.Finish
+  id: Finish
+  parent: E7.Native.NativeAudioAnalyzer
+  langs:
+  - csharp
+  - vb
+  name: Finish()
+  nameWithType: NativeAudioAnalyzer.Finish()
+  fullName: E7.Native.NativeAudioAnalyzer.Finish()
+  type: Method
+  source:
+    id: Finish
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioAnalyzer.cs
+    startLine: 97
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThere is a test game object for running the coroutine on your scene.\nIt does not take anything significant but you can call this to destroy it.\n"
+  example: []
+  syntax:
+    content: public void Finish()
+    content.vb: Public Sub Finish
+  overload: E7.Native.NativeAudioAnalyzer.Finish*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.Component
+  commentId: T:UnityEngine.Component
+  parent: UnityEngine
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: UnityEngine.Behaviour
+  commentId: T:UnityEngine.Behaviour
+  parent: UnityEngine
+  isExternal: true
+  name: Behaviour
+  nameWithType: Behaviour
+  fullName: UnityEngine.Behaviour
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  parent: UnityEngine
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: E7.Native.NativeAudioAnalyzer.Analyzed*
+  commentId: Overload:E7.Native.NativeAudioAnalyzer.Analyzed
+  name: Analyzed
+  nameWithType: NativeAudioAnalyzer.Analyzed
+  fullName: E7.Native.NativeAudioAnalyzer.Analyzed
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: E7.Native.NativeAudioAnalyzer.AnalysisResult*
+  commentId: Overload:E7.Native.NativeAudioAnalyzer.AnalysisResult
+  name: AnalysisResult
+  nameWithType: NativeAudioAnalyzer.AnalysisResult
+  fullName: E7.Native.NativeAudioAnalyzer.AnalysisResult
+- uid: E7.Native.NativeAudioAnalyzerResult
+  commentId: T:E7.Native.NativeAudioAnalyzerResult
+  parent: E7.Native
+  name: NativeAudioAnalyzerResult
+  nameWithType: NativeAudioAnalyzerResult
+  fullName: E7.Native.NativeAudioAnalyzerResult
+- uid: System.Collections.Generic.List{System.Int64}
+  commentId: T:System.Collections.Generic.List{System.Int64}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Int64>
+  nameWithType: List<Int64>
+  fullName: System.Collections.Generic.List<System.Int64>
+  nameWithType.vb: List(Of Int64)
+  fullName.vb: System.Collections.Generic.List(Of System.Int64)
+  name.vb: List(Of Int64)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: E7.Native.NativeAudio.SilentAnalyze
+  commentId: M:E7.Native.NativeAudio.SilentAnalyze
+  isExternal: true
+- uid: E7.Native.NativeAudioAnalyzer.Analyze*
+  commentId: Overload:E7.Native.NativeAudioAnalyzer.Analyze
+  name: Analyze
+  nameWithType: NativeAudioAnalyzer.Analyze
+  fullName: E7.Native.NativeAudioAnalyzer.Analyze
+- uid: E7.Native.NativeAudioAnalyzer.Finish*
+  commentId: Overload:E7.Native.NativeAudioAnalyzer.Finish
+  name: Finish
+  nameWithType: NativeAudioAnalyzer.Finish
+  fullName: E7.Native.NativeAudioAnalyzer.Finish

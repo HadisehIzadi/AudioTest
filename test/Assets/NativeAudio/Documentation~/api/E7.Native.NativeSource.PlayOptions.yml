@@ -1,0 +1,241 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeSource.PlayOptions
+  commentId: T:E7.Native.NativeSource.PlayOptions
+  id: NativeSource.PlayOptions
+  parent: E7.Native
+  children:
+  - E7.Native.NativeSource.PlayOptions.defaultOptions
+  - E7.Native.NativeSource.PlayOptions.offsetSeconds
+  - E7.Native.NativeSource.PlayOptions.pan
+  - E7.Native.NativeSource.PlayOptions.sourceLoop
+  - E7.Native.NativeSource.PlayOptions.volume
+  langs:
+  - csharp
+  - vb
+  name: NativeSource.PlayOptions
+  nameWithType: NativeSource.PlayOptions
+  fullName: E7.Native.NativeSource.PlayOptions
+  type: Struct
+  source:
+    id: PlayOptions
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 21
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nUsed with <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer%2cE7.Native.NativeSource.PlayOptions)\" data-throw-if-not-resolved=\"false\"></xref> to customize your play.\nStart creating it from <xref href=\"E7.Native.NativeSource.PlayOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  remarks: "\nOn some platforms like iOS, adjusting them after the play with <xref href=\"E7.Native.NativeSource\" data-throw-if-not-resolved=\"false\"></xref> \nis already too late because you will already hear the audio. (Even in consecutive lines of code)\n\nIt has to be a `struct` since this will be sent to the native side, \ninterop to a matching code in other language. \n"
+  example: []
+  syntax:
+    content: public struct PlayOptions
+    content.vb: Public Structure PlayOptions
+  modifiers.csharp:
+  - public
+  - struct
+  modifiers.vb:
+  - Public
+  - Structure
+- uid: E7.Native.NativeSource.PlayOptions.defaultOptions
+  commentId: F:E7.Native.NativeSource.PlayOptions.defaultOptions
+  id: defaultOptions
+  parent: E7.Native.NativeSource.PlayOptions
+  langs:
+  - csharp
+  - vb
+  name: defaultOptions
+  nameWithType: NativeSource.PlayOptions.defaultOptions
+  fullName: E7.Native.NativeSource.PlayOptions.defaultOptions
+  type: Field
+  source:
+    id: defaultOptions
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 36
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nStructs couldn&apos;t have custom default values and something like volume is better defaulted to 1 instead of 0.\nThis prellocated `static` variable contains sensible default values that you can copy from as a starting point.\n"
+  remarks: "\nConsists of : \n\n- Volume 1 (no attenuation)\n- Pan 0 (center)\n- Offset seconds 0 (starts from the beginning)\n- Source loop `false`\n"
+  example: []
+  syntax:
+    content: public static readonly NativeSource.PlayOptions defaultOptions
+    return:
+      type: E7.Native.NativeSource.PlayOptions
+    content.vb: Public Shared ReadOnly defaultOptions As NativeSource.PlayOptions
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: E7.Native.NativeSource.PlayOptions.volume
+  commentId: F:E7.Native.NativeSource.PlayOptions.volume
+  id: volume
+  parent: E7.Native.NativeSource.PlayOptions
+  langs:
+  - csharp
+  - vb
+  name: volume
+  nameWithType: NativeSource.PlayOptions.volume
+  fullName: E7.Native.NativeSource.PlayOptions.volume
+  type: Field
+  source:
+    id: volume
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 70
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nSet the volume of target native source before play.\n"
+  remarks: "\n[iOS] Maps to `AL_GAIN`. It is a scalar amplitude multiplier, so the value can go over 1.0 for increasing volume but can be clipped. \nIf you put 0.5f, it is attenuated by 6 dB.\n\n[Android] Maps to `SLVolumeItf` interface -> `SetVolumeLevel`.\nThe floating volume parameter will be converted to millibel (20xlog10x100) so that putting 0.5f here results in 6dB attenuation.\n"
+  example: []
+  syntax:
+    content: public float volume
+    return:
+      type: System.Single
+    content.vb: Public volume As Single
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.PlayOptions.pan
+  commentId: F:E7.Native.NativeSource.PlayOptions.pan
+  id: pan
+  parent: E7.Native.NativeSource.PlayOptions
+  langs:
+  - csharp
+  - vb
+  name: pan
+  nameWithType: NativeSource.PlayOptions.pan
+  fullName: E7.Native.NativeSource.PlayOptions.pan
+  type: Field
+  source:
+    id: pan
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 87
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nSet the pan of target native source before play.\n-1 for full left, 0 for center, 1 for full right.\n\nThis pan is based on &quot;balance effect&quot; and not a &quot;constant energy pan&quot;.\nThat is at the center you hear each side fully. (Constant energy pan has 3dB attenuation to both on center.)\n"
+  remarks: "\n[iOS] 2D panning in iOS will be emulated in OpenAL&apos;s 3D audio engine by splitting your stereo sound into a separated mono sounds, \nthen position each one on left and right ear of the listener. When panning, instead of adjusting gain we will just move the source \nfurther from the listener and the distance attenuation will do the work. (Gain is reserved to the setting volume command, \nso we have 2 stage of gain adjustment this way.\n\n[Android] Maps to `SLVolumeItf` interface -> `SetStereoPosition`\n"
+  example: []
+  syntax:
+    content: public float pan
+    return:
+      type: System.Single
+    content.vb: Public pan As Single
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.PlayOptions.offsetSeconds
+  commentId: F:E7.Native.NativeSource.PlayOptions.offsetSeconds
+  id: offsetSeconds
+  parent: E7.Native.NativeSource.PlayOptions
+  langs:
+  - csharp
+  - vb
+  name: offsetSeconds
+  nameWithType: NativeSource.PlayOptions.offsetSeconds
+  fullName: E7.Native.NativeSource.PlayOptions.offsetSeconds
+  type: Field
+  source:
+    id: offsetSeconds
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 95
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nStart playing from other point in the audio by offsetting \nthe target native source&apos;s playhead time SECONDS unit.\n\nWill do nothing if the offset is over the length of audio.\n"
+  example: []
+  syntax:
+    content: public float offsetSeconds
+    return:
+      type: System.Single
+    content.vb: Public offsetSeconds As Single
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: E7.Native.NativeSource.PlayOptions.sourceLoop
+  commentId: F:E7.Native.NativeSource.PlayOptions.sourceLoop
+  id: sourceLoop
+  parent: E7.Native.NativeSource.PlayOptions
+  langs:
+  - csharp
+  - vb
+  name: sourceLoop
+  nameWithType: NativeSource.PlayOptions.sourceLoop
+  fullName: E7.Native.NativeSource.PlayOptions.sourceLoop
+  type: Field
+  source:
+    id: sourceLoop
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/PlayOptions.cs
+    startLine: 110
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nApply a looping state on the native source. \n"
+  remarks: "\nThe reason why it is &quot;sourceLoop&quot; instead of &quot;loop&quot; is to emphasize that if some newer sound \ndecided to use that native source to play, that looping sound is immediately stopped since we do not mix\nand one native source can only handle one audio.\n\nTo &quot;protect&quot; the looping sound, you likely have to plan your native source index carefully when\nchoosing which source to play via <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>\n\nUsing the default round-robin <xref href=\"E7.Native.NativeAudio.GetNativeSourceAuto\" data-throw-if-not-resolved=\"false\"></xref> sooner or later will stop your looping sound when it wraps back.\n"
+  example: []
+  syntax:
+    content: public bool sourceLoop
+    return:
+      type: System.Boolean
+    content.vb: Public sourceLoop As Boolean
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer,E7.Native.NativeSource.PlayOptions)
+  isExternal: true
+- uid: E7.Native.NativeSource.PlayOptions.defaultOptions
+  commentId: F:E7.Native.NativeSource.PlayOptions.defaultOptions
+  isExternal: true
+- uid: E7.Native.NativeSource
+  commentId: T:E7.Native.NativeSource
+  parent: E7.Native
+  name: NativeSource
+  nameWithType: NativeSource
+  fullName: E7.Native.NativeSource
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: E7.Native.NativeSource.PlayOptions
+  commentId: T:E7.Native.NativeSource.PlayOptions
+  parent: E7.Native
+  name: NativeSource.PlayOptions
+  nameWithType: NativeSource.PlayOptions
+  fullName: E7.Native.NativeSource.PlayOptions
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  commentId: M:E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  isExternal: true
+- uid: E7.Native.NativeAudio.GetNativeSourceAuto
+  commentId: M:E7.Native.NativeAudio.GetNativeSourceAuto
+  isExternal: true
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

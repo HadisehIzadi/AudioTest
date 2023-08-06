@@ -1,0 +1,10 @@
+- name: Sources of latency
+  href: sources-of-latency.md
+- name: Ways around latency
+  href: ways-around-latency.md
+- name: DOTS Audio
+  href: dots-audio.md
+- name: Research history
+  href: research-history.md
+- name: Special thanks
+  href: special-thanks.md

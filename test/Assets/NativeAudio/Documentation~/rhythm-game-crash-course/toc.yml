@@ -1,0 +1,12 @@
+- name: Rhythm Game Crash Course
+  href: index.md
+- name: Game design and notecharting
+  href: game-design-and-notecharting.md
+- name: 4 classes of audio apps
+  href: classes-of-audio-apps.md
+- name: Import settings
+  href: import-settings.md
+- name: DSP sync
+  href: dsp-sync.md
+- name: Tips from Bemuse
+  href: tips-from-bemuse.md

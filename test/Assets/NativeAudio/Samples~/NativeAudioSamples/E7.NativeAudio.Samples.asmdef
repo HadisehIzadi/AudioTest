@@ -1,0 +1,8 @@
+{
+    "name": "E7.NativeAudio.Samples",
+    "references": [
+        "E7.NativeAudio"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

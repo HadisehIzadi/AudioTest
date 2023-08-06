@@ -1,0 +1,26 @@
+### YamlMime:TableOfContent
+- uid: E7.Native
+  name: E7.Native
+  items:
+  - uid: E7.Native.DeviceAudioInformation
+    name: DeviceAudioInformation
+  - uid: E7.Native.INativeSourceSelector
+    name: INativeSourceSelector
+  - uid: E7.Native.NativeAudio
+    name: NativeAudio
+  - uid: E7.Native.NativeAudio.InitializationOptions
+    name: NativeAudio.InitializationOptions
+  - uid: E7.Native.NativeAudio.LoadOptions
+    name: NativeAudio.LoadOptions
+  - uid: E7.Native.NativeAudio.LoadOptions.ResamplingQuality
+    name: NativeAudio.LoadOptions.ResamplingQuality
+  - uid: E7.Native.NativeAudioAnalyzer
+    name: NativeAudioAnalyzer
+  - uid: E7.Native.NativeAudioAnalyzerResult
+    name: NativeAudioAnalyzerResult
+  - uid: E7.Native.NativeAudioPointer
+    name: NativeAudioPointer
+  - uid: E7.Native.NativeSource
+    name: NativeSource
+  - uid: E7.Native.NativeSource.PlayOptions
+    name: NativeSource.PlayOptions

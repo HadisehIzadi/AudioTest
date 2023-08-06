@@ -1,0 +1,782 @@
+### YamlMime:ManagedReference
+items:
+- uid: E7.Native.NativeAudio
+  commentId: T:E7.Native.NativeAudio
+  id: NativeAudio
+  parent: E7.Native
+  children:
+  - E7.Native.NativeAudio.Dispose
+  - E7.Native.NativeAudio.GetDeviceAudioInformation
+  - E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  - E7.Native.NativeAudio.GetNativeSourceAuto
+  - E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  - E7.Native.NativeAudio.Initialize
+  - E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  - E7.Native.NativeAudio.Initialized
+  - E7.Native.NativeAudio.Load(System.String)
+  - E7.Native.NativeAudio.Load(System.String,E7.Native.NativeAudio.LoadOptions)
+  - E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  - E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  - E7.Native.NativeAudio.OnSupportedPlatform
+  - E7.Native.NativeAudio.SilentAnalyze
+  langs:
+  - csharp
+  - vb
+  name: NativeAudio
+  nameWithType: NativeAudio
+  fullName: E7.Native.NativeAudio
+  type: Class
+  source:
+    id: NativeAudio
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudioIos.cs
+    startLine: 9
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nThe most important class, contains `static` methods that are used to command the native side.\n"
+  example: []
+  syntax:
+    content: public static class NativeAudio
+    content.vb: Public Module NativeAudio
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: E7.Native.NativeAudio.Initialized
+  commentId: P:E7.Native.NativeAudio.Initialized
+  id: Initialized
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Initialized
+  nameWithType: NativeAudio.Initialized
+  fullName: E7.Native.NativeAudio.Initialized
+  type: Property
+  source:
+    id: Initialized
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 19
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nReturns `true` after calling <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref> successfully, meaning that\nwe have a certain amount of native sources ready for use at native side.\n\nIt is able to turn back to `false` if you call <xref href=\"E7.Native.NativeAudio.Dispose\" data-throw-if-not-resolved=\"false\"></xref> to return native sources back\nto the OS.\n"
+  example: []
+  syntax:
+    content: public static bool Initialized { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property Initialized As Boolean
+  overload: E7.Native.NativeAudio.Initialized*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: E7.Native.NativeAudio.OnSupportedPlatform
+  commentId: P:E7.Native.NativeAudio.OnSupportedPlatform
+  id: OnSupportedPlatform
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: OnSupportedPlatform
+  nameWithType: NativeAudio.OnSupportedPlatform
+  fullName: E7.Native.NativeAudio.OnSupportedPlatform
+  type: Property
+  source:
+    id: OnSupportedPlatform
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 33
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n- If in Editor, it is instantly unsupported no matter what build platform selected.\n- If not in Editor, it is `true` only on Android and iOS.\n"
+  example: []
+  syntax:
+    content: public static bool OnSupportedPlatform { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property OnSupportedPlatform As Boolean
+  overload: E7.Native.NativeAudio.OnSupportedPlatform*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: E7.Native.NativeAudio.Initialize
+  commentId: M:E7.Native.NativeAudio.Initialize
+  id: Initialize
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: NativeAudio.Initialize()
+  fullName: E7.Native.NativeAudio.Initialize()
+  type: Method
+  source:
+    id: Initialize
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 58
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n[iOS] Initializes OpenAL. 15 OpenAL native sources will be allocated all at once. \nIt is not possible to initialize again on iOS. (Nothing will happen)\n\n[Android] Initializes OpenSL ES. 1 OpenSL ES &quot;Engine&quot; and a number of native sources `AudioPlayer` object \n(and in turn native `AudioTrack`) will be allocated all at once.\n\nSee <xref href=\"E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)\" data-throw-if-not-resolved=\"false\"></xref> overload how to customize your intialization.\n"
+  remarks: "\n- More about this limit : https://developer.android.com/ndk/guides/audio/opensl/opensl-for-android\n- And my own research here : https://gametorrahod.com/androids-native-audio-primer-for-unity-developers\n"
+  example: []
+  syntax:
+    content: public static void Initialize()
+    content.vb: Public Shared Sub Initialize
+  overload: E7.Native.NativeAudio.Initialize*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  commentId: M:E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  id: Initialize(E7.Native.NativeAudio.InitializationOptions)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Initialize(NativeAudio.InitializationOptions)
+  nameWithType: NativeAudio.Initialize(NativeAudio.InitializationOptions)
+  fullName: E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  type: Method
+  source:
+    id: Initialize
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 82
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n[iOS] Initializes OpenAL. 15 OpenAL native sources will be allocated all at once. \nIt is not possible to initialize again on iOS. (Nothing will happen)\n\n[Android] Initializes OpenSL ES. 1 OpenSL ES &quot;Engine&quot; and a number of native sources `AudioPlayer` object \n(and in turn native `AudioTrack`) will be allocated all at once.\n\nSee <xref href=\"E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)\" data-throw-if-not-resolved=\"false\"></xref> overload how to customize your intialization.\n"
+  remarks: "\n- More about this limit : https://developer.android.com/ndk/guides/audio/opensl/opensl-for-android\n- And my own research here : https://gametorrahod.com/androids-native-audio-primer-for-unity-developers\n"
+  example: []
+  syntax:
+    content: public static void Initialize(NativeAudio.InitializationOptions initializationOptions)
+    parameters:
+    - id: initializationOptions
+      type: E7.Native.NativeAudio.InitializationOptions
+      description: "\nCustomize your initialization. \nStart making it from <xref href=\"E7.Native.NativeAudio.InitializationOptions.defaultOptions\" data-throw-if-not-resolved=\"false\"></xref>\n"
+    content.vb: Public Shared Sub Initialize(initializationOptions As NativeAudio.InitializationOptions)
+  overload: E7.Native.NativeAudio.Initialize*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: >-
+      Thrown when you initialize in Editor or something other than
+
+      iOS or Android at runtime.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.Dispose
+  commentId: M:E7.Native.NativeAudio.Dispose
+  id: Dispose
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: NativeAudio.Dispose()
+  fullName: E7.Native.NativeAudio.Dispose()
+  type: Method
+  source:
+    id: Dispose
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 124
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n[Android] Undo the <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref>. \nIt doesn&apos;t affect any loaded audio, just dispose all the native sources returning them to OS and make them\navailable for other applications. You still have to unload each audio.\nDisposing twice is safe, it does nothing.\n\n[iOS] Disposing doesn&apos;t work.\n\n[Editor] This is a no-op. It is safe to call and nothing will happen.\n"
+  example: []
+  syntax:
+    content: public static void Dispose()
+    content.vb: Public Shared Sub Dispose
+  overload: E7.Native.NativeAudio.Dispose*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  id: Load(UnityEngine.AudioClip)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Load(AudioClip)
+  nameWithType: NativeAudio.Load(AudioClip)
+  fullName: E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  type: Method
+  source:
+    id: Load
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 184
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nLoads by copying Unity-imported <xref href=\"UnityEngine.AudioClip\" data-throw-if-not-resolved=\"false\"></xref>&apos;s raw audio memory to native side.\nYou are free to unload the <xref href=\"UnityEngine.AudioClip\" data-throw-if-not-resolved=\"false\"></xref>&apos;s audio data without affecting what&apos;s loaded at the native side after this.\n\n[Editor] This method is a stub and returns `null`.\n"
+  remarks: "\nIf you did not <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref> yet, it will initialize with no <xref href=\"E7.Native.NativeAudio.InitializationOptions\" data-throw-if-not-resolved=\"false\"></xref>.\nYou cannot load audio while uninitialized.\n\nHard requirements : \n\n- Load type MUST be Decompress On Load so Native Audio could read raw PCM byte array from your compressed audio.\n- If you use Load In Background, you must call <xref href=\"UnityEngine.AudioClip.LoadAudioData\" data-throw-if-not-resolved=\"false\"></xref> beforehand and ensure that <xref href=\"UnityEngine.AudioClip.loadState\" data-throw-if-not-resolved=\"false\"></xref> is <xref href=\"UnityEngine.AudioDataLoadState.Loaded\" data-throw-if-not-resolved=\"false\"></xref> before calling <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref>. Otherwise it would throw an exception. If you are not using <xref href=\"UnityEngine.AudioClip.loadInBackground\" data-throw-if-not-resolved=\"false\"></xref> but also not using <xref href=\"UnityEngine.AudioClip.preloadAudioData\" data-throw-if-not-resolved=\"false\"></xref>, Native Audio can load for you if not yet loaded.\n- Must not be <xref href=\"UnityEngine.AudioClip.ambisonic\" data-throw-if-not-resolved=\"false\"></xref>.\n\nIt supports all compression format, force to mono, overriding to any sample rate, and quality slider.\n\n[iOS] Loads an audio into OpenAL&apos;s output audio buffer. (Max 256)\nThis buffer will be paired to one of 15 OpenAL source when you play it.\n\n[Android] Loads an audio into a `short*` array at unmanaged native side. \nThis array will be pushed into one of available `SLAndroidSimpleBufferQueue` when you play it.\n\nThe resampling of audio will occur at this moment to match your player&apos;s device native rate.\n\nThe SLES audio player must be created to match the device rate\nto enable the special &quot;fast path&quot; audio. \nWhat&apos;s left is to make our audio compatible with that fast path player, \nwhich the resampler will take care of.\n\nYou can change the sampling quality of SRC (`libsamplerate`) library on a \nper-audio basis with the <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip%2cE7.Native.NativeAudio.LoadOptions)\" data-throw-if-not-resolved=\"false\"></xref> overload.\n"
+  example: []
+  syntax:
+    content: public static NativeAudioPointer Load(AudioClip audioClip)
+    parameters:
+    - id: audioClip
+      type: UnityEngine.AudioClip
+      description: "\nHard requirements : \n- Load type MUST be Decompress On Load so Native Audio could read raw PCM byte array from your compressed audio.\n- If you use Load In Background, you must call <xref href=\"UnityEngine.AudioClip.LoadAudioData\" data-throw-if-not-resolved=\"false\"></xref> beforehand and ensure that <xref href=\"UnityEngine.AudioClip.loadState\" data-throw-if-not-resolved=\"false\"></xref> is <xref href=\"UnityEngine.AudioDataLoadState.Loaded\" data-throw-if-not-resolved=\"false\"></xref> before calling <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref>. Otherwise it would throw an exception. If you are not using <xref href=\"UnityEngine.AudioClip.loadInBackground\" data-throw-if-not-resolved=\"false\"></xref> but also not using <xref href=\"UnityEngine.AudioClip.preloadAudioData\" data-throw-if-not-resolved=\"false\"></xref>, Native Audio can load for you if not yet loaded.\n- Must not be <xref href=\"UnityEngine.AudioClip.ambisonic\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+    return:
+      type: E7.Native.NativeAudioPointer
+      description: "\nAn audio buffer pointer for use with <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref>. \nGet the source from <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+    content.vb: Public Shared Function Load(audioClip As AudioClip) As NativeAudioPointer
+  overload: E7.Native.NativeAudio.Load*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when some unexpected exception at native side loading occurs.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Thrown when you have prohibited settings on your <xref href="UnityEngine.AudioClip" data-throw-if-not-resolved="false"></xref>.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when you didn&apos;t manually load your <xref href="UnityEngine.AudioClip" data-throw-if-not-resolved="false"></xref> when it is not set to load in background.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  id: Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Load(AudioClip, NativeAudio.LoadOptions)
+  nameWithType: NativeAudio.Load(AudioClip, NativeAudio.LoadOptions)
+  fullName: E7.Native.NativeAudio.Load(UnityEngine.AudioClip, E7.Native.NativeAudio.LoadOptions)
+  type: Method
+  source:
+    id: Load
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 237
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nLoads by copying Unity-imported <xref href=\"UnityEngine.AudioClip\" data-throw-if-not-resolved=\"false\"></xref>&apos;s raw audio memory to native side.\nYou are free to unload the <xref href=\"UnityEngine.AudioClip\" data-throw-if-not-resolved=\"false\"></xref>&apos;s audio data without affecting what&apos;s loaded at the native side after this.\n\n[Editor] This method is a stub and returns `null`.\n"
+  remarks: "\nIf you did not <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref> yet, it will initialize with no <xref href=\"E7.Native.NativeAudio.InitializationOptions\" data-throw-if-not-resolved=\"false\"></xref>.\nYou cannot load audio while uninitialized.\n\nHard requirements : \n\n- Load type MUST be Decompress On Load so Native Audio could read raw PCM byte array from your compressed audio.\n- If you use Load In Background, you must call <xref href=\"UnityEngine.AudioClip.LoadAudioData\" data-throw-if-not-resolved=\"false\"></xref> beforehand and ensure that <xref href=\"UnityEngine.AudioClip.loadState\" data-throw-if-not-resolved=\"false\"></xref> is <xref href=\"UnityEngine.AudioDataLoadState.Loaded\" data-throw-if-not-resolved=\"false\"></xref> before calling <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref>. Otherwise it would throw an exception. If you are not using <xref href=\"UnityEngine.AudioClip.loadInBackground\" data-throw-if-not-resolved=\"false\"></xref> but also not using <xref href=\"UnityEngine.AudioClip.preloadAudioData\" data-throw-if-not-resolved=\"false\"></xref>, Native Audio can load for you if not yet loaded.\n- Must not be <xref href=\"UnityEngine.AudioClip.ambisonic\" data-throw-if-not-resolved=\"false\"></xref>.\n\nIt supports all compression format, force to mono, overriding to any sample rate, and quality slider.\n\n[iOS] Loads an audio into OpenAL&apos;s output audio buffer. (Max 256)\nThis buffer will be paired to one of 15 OpenAL source when you play it.\n\n[Android] Loads an audio into a `short*` array at unmanaged native side. \nThis array will be pushed into one of available `SLAndroidSimpleBufferQueue` when you play it.\n\nThe resampling of audio will occur at this moment to match your player&apos;s device native rate.\n\nThe SLES audio player must be created to match the device rate\nto enable the special &quot;fast path&quot; audio. \nWhat&apos;s left is to make our audio compatible with that fast path player, \nwhich the resampler will take care of.\n\nYou can change the sampling quality of SRC (`libsamplerate`) library on a \nper-audio basis with the <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip%2cE7.Native.NativeAudio.LoadOptions)\" data-throw-if-not-resolved=\"false\"></xref> overload.\n"
+  example: []
+  syntax:
+    content: public static NativeAudioPointer Load(AudioClip audioClip, NativeAudio.LoadOptions loadOptions)
+    parameters:
+    - id: audioClip
+      type: UnityEngine.AudioClip
+      description: "\nHard requirements : \n- Load type MUST be Decompress On Load so Native Audio could read raw PCM byte array from your compressed audio.\n- If you use Load In Background, you must call <xref href=\"UnityEngine.AudioClip.LoadAudioData\" data-throw-if-not-resolved=\"false\"></xref> beforehand and ensure that <xref href=\"UnityEngine.AudioClip.loadState\" data-throw-if-not-resolved=\"false\"></xref> is <xref href=\"UnityEngine.AudioDataLoadState.Loaded\" data-throw-if-not-resolved=\"false\"></xref> before calling <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref>. Otherwise it would throw an exception. If you are not using <xref href=\"UnityEngine.AudioClip.loadInBackground\" data-throw-if-not-resolved=\"false\"></xref> but also not using <xref href=\"UnityEngine.AudioClip.preloadAudioData\" data-throw-if-not-resolved=\"false\"></xref>, Native Audio can load for you if not yet loaded.\n- Must not be <xref href=\"UnityEngine.AudioClip.ambisonic\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+    - id: loadOptions
+      type: E7.Native.NativeAudio.LoadOptions
+      description: Customize your load. Start creating your option from <xref href="E7.Native.NativeAudio.LoadOptions.defaultOptions" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: E7.Native.NativeAudioPointer
+      description: "\nAn audio buffer pointer for use with <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref>. \nGet the source from <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+    content.vb: Public Shared Function Load(audioClip As AudioClip, loadOptions As NativeAudio.LoadOptions) As NativeAudioPointer
+  overload: E7.Native.NativeAudio.Load*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when some unexpected exception at native side loading occurs.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Thrown when you have prohibited settings on your <xref href="UnityEngine.AudioClip" data-throw-if-not-resolved="false"></xref>.
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown when you didn&apos;t manually load your <xref href="UnityEngine.AudioClip" data-throw-if-not-resolved="false"></xref> when it is not set to load in background.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.Load(System.String)
+  commentId: M:E7.Native.NativeAudio.Load(System.String)
+  id: Load(System.String)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Load(String)
+  nameWithType: NativeAudio.Load(String)
+  fullName: E7.Native.NativeAudio.Load(System.String)
+  type: Method
+  source:
+    id: Load
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 296
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n(**ADVANCED**) Loads an audio from `StreamingAssets` folder&apos;s desination at runtime. \nMost of the case you should use the <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref> overload instead.\n\nIt only supports `.wav` PCM 16-bit format, stereo or mono, \nin any sampling rate since it will be resampled to fit the device.\n"
+  example: []
+  syntax:
+    content: public static NativeAudioPointer Load(string streamingAssetsRelativePath)
+    parameters:
+    - id: streamingAssetsRelativePath
+      type: System.String
+      description: If the file is `SteamingAssets/Hit.wav` use &quot;Hit.wav&quot; (WITH the extension).
+    return:
+      type: E7.Native.NativeAudioPointer
+      description: "\nAn audio buffer pointer for use with <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref>.\nGet the source from <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+    content.vb: Public Shared Function Load(streamingAssetsRelativePath As String) As NativeAudioPointer
+  overload: E7.Native.NativeAudio.Load*
+  exceptions:
+  - type: System.IO.FileLoadException
+    commentId: T:System.IO.FileLoadException
+    description: Thrown when some unexpected exception at native side loading occurs.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.Load(System.String,E7.Native.NativeAudio.LoadOptions)
+  commentId: M:E7.Native.NativeAudio.Load(System.String,E7.Native.NativeAudio.LoadOptions)
+  id: Load(System.String,E7.Native.NativeAudio.LoadOptions)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: Load(String, NativeAudio.LoadOptions)
+  nameWithType: NativeAudio.Load(String, NativeAudio.LoadOptions)
+  fullName: E7.Native.NativeAudio.Load(System.String, E7.Native.NativeAudio.LoadOptions)
+  type: Method
+  source:
+    id: Load
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 315
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n(**ADVANCED**) Loads an audio from `StreamingAssets` folder&apos;s desination at runtime. \nMost of the case you should use the <xref href=\"E7.Native.NativeAudio.Load(UnityEngine.AudioClip)\" data-throw-if-not-resolved=\"false\"></xref> overload instead.\n\nIt only supports `.wav` PCM 16-bit format, stereo or mono, \nin any sampling rate since it will be resampled to fit the device.\n"
+  example: []
+  syntax:
+    content: public static NativeAudioPointer Load(string streamingAssetsRelativePath, NativeAudio.LoadOptions loadOptions)
+    parameters:
+    - id: streamingAssetsRelativePath
+      type: System.String
+      description: If the file is `SteamingAssets/Hit.wav` use &quot;Hit.wav&quot; (WITH the extension).
+    - id: loadOptions
+      type: E7.Native.NativeAudio.LoadOptions
+      description: Customize your load. Start creating your option from <xref href="E7.Native.NativeAudio.LoadOptions.defaultOptions" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: E7.Native.NativeAudioPointer
+      description: "\nAn audio buffer pointer for use with <xref href=\"E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)\" data-throw-if-not-resolved=\"false\"></xref>.\nGet the source from <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>\n"
+    content.vb: Public Shared Function Load(streamingAssetsRelativePath As String, loadOptions As NativeAudio.LoadOptions) As NativeAudioPointer
+  overload: E7.Native.NativeAudio.Load*
+  exceptions:
+  - type: System.IO.FileLoadException
+    commentId: T:System.IO.FileLoadException
+    description: Thrown when some unexpected exception at native side loading occurs.
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  commentId: M:E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  id: GetNativeSource(System.Int32)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: GetNativeSource(Int32)
+  nameWithType: NativeAudio.GetNativeSource(Int32)
+  fullName: E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  type: Method
+  source:
+    id: GetNativeSource
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 422
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nGet a native source in order to play an audio or control an audio currently played on it.\nYou can keep and cache the returned native source reference and keep using it.\n\nThis method is for when you want a specific index of native source you would like to play on.\n"
+  remarks: "\nIt checks with the native side if\na specified <code data-dev-comment-type=\"paramref\" class=\"paramref\">nativeSourceIndex</code> is valid or not before returning a native source \ninterfacing object to you. If not, it has a fallback to round-robin native source selection.\n\nRefer to [Selecting native sources](https://exceed7.com/native-audio/how-to-use/selecting-native-sources.html) \non how to strategize your native source index usage depending on your audio.\n"
+  example: []
+  syntax:
+    content: public static NativeSource GetNativeSource(int nativeSourceIndex)
+    parameters:
+    - id: nativeSourceIndex
+      type: System.Int32
+      description: "\nSpecify a zero-indexed native source that you want. If at <xref href=\"E7.Native.NativeAudio.Initialize\" data-throw-if-not-resolved=\"false\"></xref> you\nrequested 3, then valid numbers here are : 0, 1, and 2.\n\nIf this index turns out to be an invalid index at native side, it has a fallback to round-robin\nnative source selection.\n"
+    return:
+      type: E7.Native.NativeSource
+      description: "\nNative source representation you can use it to play audio.\n\nIf <code data-dev-comment-type=\"paramref\" class=\"paramref\">nativeSourceIndex</code> used was invalid,\nthen this is a result of fallback round-robin native source selection.\n"
+    content.vb: Public Shared Function GetNativeSource(nativeSourceIndex As Integer) As NativeSource
+  overload: E7.Native.NativeAudio.GetNativeSource*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.GetNativeSourceAuto
+  commentId: M:E7.Native.NativeAudio.GetNativeSourceAuto
+  id: GetNativeSourceAuto
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: GetNativeSourceAuto()
+  nameWithType: NativeAudio.GetNativeSourceAuto()
+  fullName: E7.Native.NativeAudio.GetNativeSourceAuto()
+  type: Method
+  source:
+    id: GetNativeSourceAuto
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 449
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nGet a native source in order to play an audio or control an audio currently played on it.\nYou can keep and cache the returned native source reference and keep using it.\n\nUnlike <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>,\nthis method is for when you just want to play an audio without much care about stopping \na previously played audio on any available native source.\n\nIt selects a native source by round-robin algorithm, just select the next index\nfrom the previous play.\n"
+  remarks: "\nRefer to [Selecting native sources](https://exceed7.com/native-audio/how-to-use/selecting-native-sources.html) \non how to strategize your native source index usage depending on your audio.\n"
+  example: []
+  syntax:
+    content: public static NativeSource GetNativeSourceAuto()
+    return:
+      type: E7.Native.NativeSource
+      description: "\nNative source representation you can use it to play audio resulting from round-robin selection.\n"
+    content.vb: Public Shared Function GetNativeSourceAuto As NativeSource
+  overload: E7.Native.NativeAudio.GetNativeSourceAuto*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  commentId: M:E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  id: GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: GetNativeSourceAuto(INativeSourceSelector)
+  nameWithType: NativeAudio.GetNativeSourceAuto(INativeSourceSelector)
+  fullName: E7.Native.NativeAudio.GetNativeSourceAuto(E7.Native.INativeSourceSelector)
+  type: Method
+  source:
+    id: GetNativeSourceAuto
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 478
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nGet a native source in order to play an audio or control an audio currently played on it.\nYou can keep and cache the returned native source reference and keep using it.\n\nLike <xref href=\"E7.Native.NativeAudio.GetNativeSource(System.Int32)\" data-throw-if-not-resolved=\"false\"></xref>, this method is for when you want a specific index\nof native source to play. But unlike that, you can create your own &quot;index returning object&quot;\nthat implements <xref href=\"E7.Native.INativeSourceSelector\" data-throw-if-not-resolved=\"false\"></xref>. Making it more systematic for you.\n"
+  remarks: "\nYou can have internal state inside it if it is a `class`, you can emulate the default\nround-robin native source selection, for example.\n\nRefer to [Selecting native sources](https://exceed7.com/native-audio/how-to-use/selecting-native-sources.html) \non how to strategize your native source index usage depending on your audio.\n"
+  example: []
+  syntax:
+    content: public static NativeSource GetNativeSourceAuto(INativeSourceSelector nativeSourceSelector)
+    parameters:
+    - id: nativeSourceSelector
+      type: E7.Native.INativeSourceSelector
+    return:
+      type: E7.Native.NativeSource
+      description: "\nNative source representation you can use it to play audio, resulting from an index that\nNative Audio got from calling <xref href=\"E7.Native.INativeSourceSelector.NextNativeSourceIndex\" data-throw-if-not-resolved=\"false\"></xref> on\n<code data-dev-comment-type=\"paramref\" class=\"paramref\">nativeSourceSelector</code>.\n"
+    content.vb: Public Shared Function GetNativeSourceAuto(nativeSourceSelector As INativeSourceSelector) As NativeSource
+  overload: E7.Native.NativeAudio.GetNativeSourceAuto*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.GetDeviceAudioInformation
+  commentId: M:E7.Native.NativeAudio.GetDeviceAudioInformation
+  id: GetDeviceAudioInformation
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: GetDeviceAudioInformation()
+  nameWithType: NativeAudio.GetDeviceAudioInformation()
+  fullName: E7.Native.NativeAudio.GetDeviceAudioInformation()
+  type: Method
+  source:
+    id: GetDeviceAudioInformation
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 497
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\nAsk the phone about its audio capabilities.\n\nThe returned `struct` has different properties depending on platform.\nYou should put preprocessor directive (`#if UNITY_ANDROID` and so on) over the returned object\nif you are going to access any of its fields. Or else it would be an error if you switch your build platform.\n\n[Editor] Does not work, returns default value of <xref href=\"E7.Native.DeviceAudioInformation\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public static DeviceAudioInformation GetDeviceAudioInformation()
+    return:
+      type: E7.Native.DeviceAudioInformation
+    content.vb: Public Shared Function GetDeviceAudioInformation As DeviceAudioInformation
+  overload: E7.Native.NativeAudio.GetDeviceAudioInformation*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: E7.Native.NativeAudio.SilentAnalyze
+  commentId: M:E7.Native.NativeAudio.SilentAnalyze
+  id: SilentAnalyze
+  parent: E7.Native.NativeAudio
+  langs:
+  - csharp
+  - vb
+  name: SilentAnalyze()
+  nameWithType: NativeAudio.SilentAnalyze()
+  fullName: E7.Native.NativeAudio.SilentAnalyze()
+  type: Method
+  source:
+    id: SilentAnalyze
+    path: /Users/Sargon/Documents/Unity Projects/Asset Store/NativeAudio/Assets/NativeAudio/Runtime/NativeAudio.cs
+    startLine: 535
+  assemblies:
+  - E7.NativeAudio
+  namespace: E7.Native
+  summary: "\n(**EXPERIMENTAL**) Native Audio will load a small silent wav and perform various stress test for about 1 second.\nYour player won&apos;t be able to hear anything, but recommended to do it when there&apos;s no other workload running because it will also measure FPS.\n\nThe test will be asynchronous because it has to wait for frame to play the next audio. Yield wait for the result with the returned <xref href=\"E7.Native.NativeAudioAnalyzer\" data-throw-if-not-resolved=\"false\"></xref>.\nThis is a component of a new game object created to run a test coroutine on your scene.\n\nIf your game is in a yieldable routine, use `yield return new WaitUntil( () => analyzer.Analyzed );&apos; it will wait a frame until that is `true`.\nIf not, you can do a blocking wait with a `while` loop on `analyzer.Analyzed == false`.\n\nYou must have initialized Native Audio before doing the analysis or else Native Audio will initialize with default options.\n(Remember you cannot initialize twice to fix initialization options)\n\nBy the analysis result you can see if the frame rate drop while using Native Audio or not. I have fixed most of the frame rate drop problem I found.\nBut if there are more obscure devices that drop frame rate, this method can check it at runtime and by the returned result you can stop using Native Audio\nand return to Unity <xref href=\"UnityEngine.AudioSource\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+  example: []
+  syntax:
+    content: public static NativeAudioAnalyzer SilentAnalyze()
+    return:
+      type: E7.Native.NativeAudioAnalyzer
+    content.vb: Public Shared Function SilentAnalyze As NativeAudioAnalyzer
+  overload: E7.Native.NativeAudio.SilentAnalyze*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: E7.Native
+  commentId: N:E7.Native
+  name: E7.Native
+  nameWithType: E7.Native
+  fullName: E7.Native
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: E7.Native.NativeAudio.Initialize
+  commentId: M:E7.Native.NativeAudio.Initialize
+  isExternal: true
+- uid: E7.Native.NativeAudio.Dispose
+  commentId: M:E7.Native.NativeAudio.Dispose
+  isExternal: true
+- uid: E7.Native.NativeAudio.Initialized*
+  commentId: Overload:E7.Native.NativeAudio.Initialized
+  name: Initialized
+  nameWithType: NativeAudio.Initialized
+  fullName: E7.Native.NativeAudio.Initialized
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: E7.Native.NativeAudio.OnSupportedPlatform*
+  commentId: Overload:E7.Native.NativeAudio.OnSupportedPlatform
+  name: OnSupportedPlatform
+  nameWithType: NativeAudio.OnSupportedPlatform
+  fullName: E7.Native.NativeAudio.OnSupportedPlatform
+- uid: E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  commentId: M:E7.Native.NativeAudio.Initialize(E7.Native.NativeAudio.InitializationOptions)
+  isExternal: true
+- uid: E7.Native.NativeAudio.Initialize*
+  commentId: Overload:E7.Native.NativeAudio.Initialize
+  name: Initialize
+  nameWithType: NativeAudio.Initialize
+  fullName: E7.Native.NativeAudio.Initialize
+- uid: E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  commentId: F:E7.Native.NativeAudio.InitializationOptions.defaultOptions
+  isExternal: true
+- uid: System.NotSupportedException
+  commentId: T:System.NotSupportedException
+  isExternal: true
+- uid: E7.Native.NativeAudio.InitializationOptions
+  commentId: T:E7.Native.NativeAudio.InitializationOptions
+  parent: E7.Native
+  name: NativeAudio.InitializationOptions
+  nameWithType: NativeAudio.InitializationOptions
+  fullName: E7.Native.NativeAudio.InitializationOptions
+- uid: E7.Native.NativeAudio.Dispose*
+  commentId: Overload:E7.Native.NativeAudio.Dispose
+  name: Dispose
+  nameWithType: NativeAudio.Dispose
+  fullName: E7.Native.NativeAudio.Dispose
+- uid: UnityEngine.AudioClip
+  commentId: T:UnityEngine.AudioClip
+  parent: UnityEngine
+  isExternal: true
+  name: AudioClip
+  nameWithType: AudioClip
+  fullName: UnityEngine.AudioClip
+- uid: UnityEngine.AudioClip.LoadAudioData
+  commentId: M:UnityEngine.AudioClip.LoadAudioData
+  isExternal: true
+- uid: UnityEngine.AudioClip.loadState
+  commentId: P:UnityEngine.AudioClip.loadState
+  isExternal: true
+- uid: UnityEngine.AudioDataLoadState.Loaded
+  commentId: F:UnityEngine.AudioDataLoadState.Loaded
+  isExternal: true
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip)
+  isExternal: true
+- uid: UnityEngine.AudioClip.loadInBackground
+  commentId: P:UnityEngine.AudioClip.loadInBackground
+  isExternal: true
+- uid: UnityEngine.AudioClip.preloadAudioData
+  commentId: P:UnityEngine.AudioClip.preloadAudioData
+  isExternal: true
+- uid: UnityEngine.AudioClip.ambisonic
+  commentId: P:UnityEngine.AudioClip.ambisonic
+  isExternal: true
+- uid: E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  commentId: M:E7.Native.NativeAudio.Load(UnityEngine.AudioClip,E7.Native.NativeAudio.LoadOptions)
+  isExternal: true
+- uid: E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  commentId: M:E7.Native.NativeSource.Play(E7.Native.NativeAudioPointer)
+  isExternal: true
+- uid: E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  commentId: M:E7.Native.NativeAudio.GetNativeSource(System.Int32)
+  isExternal: true
+- uid: System.Exception
+  commentId: T:System.Exception
+  isExternal: true
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+- uid: E7.Native.NativeAudio.Load*
+  commentId: Overload:E7.Native.NativeAudio.Load
+  name: Load
+  nameWithType: NativeAudio.Load
+  fullName: E7.Native.NativeAudio.Load
+- uid: E7.Native.NativeAudioPointer
+  commentId: T:E7.Native.NativeAudioPointer
+  parent: E7.Native
+  name: NativeAudioPointer
+  nameWithType: NativeAudioPointer
+  fullName: E7.Native.NativeAudioPointer
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: E7.Native.NativeAudio.LoadOptions.defaultOptions
+  commentId: F:E7.Native.NativeAudio.LoadOptions.defaultOptions
+  isExternal: true
+- uid: E7.Native.NativeAudio.LoadOptions
+  commentId: T:E7.Native.NativeAudio.LoadOptions
+  parent: E7.Native
+  name: NativeAudio.LoadOptions
+  nameWithType: NativeAudio.LoadOptions
+  fullName: E7.Native.NativeAudio.LoadOptions
+- uid: System.IO.FileLoadException
+  commentId: T:System.IO.FileLoadException
+  isExternal: true
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: E7.Native.NativeAudio.GetNativeSource*
+  commentId: Overload:E7.Native.NativeAudio.GetNativeSource
+  name: GetNativeSource
+  nameWithType: NativeAudio.GetNativeSource
+  fullName: E7.Native.NativeAudio.GetNativeSource
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: E7.Native.NativeSource
+  commentId: T:E7.Native.NativeSource
+  parent: E7.Native
+  name: NativeSource
+  nameWithType: NativeSource
+  fullName: E7.Native.NativeSource
+- uid: E7.Native.NativeAudio.GetNativeSourceAuto*
+  commentId: Overload:E7.Native.NativeAudio.GetNativeSourceAuto
+  name: GetNativeSourceAuto
+  nameWithType: NativeAudio.GetNativeSourceAuto
+  fullName: E7.Native.NativeAudio.GetNativeSourceAuto
+- uid: E7.Native.INativeSourceSelector
+  commentId: T:E7.Native.INativeSourceSelector
+  parent: E7.Native
+  name: INativeSourceSelector
+  nameWithType: INativeSourceSelector
+  fullName: E7.Native.INativeSourceSelector
+- uid: E7.Native.INativeSourceSelector.NextNativeSourceIndex
+  commentId: M:E7.Native.INativeSourceSelector.NextNativeSourceIndex
+  isExternal: true
+- uid: E7.Native.DeviceAudioInformation
+  commentId: T:E7.Native.DeviceAudioInformation
+  parent: E7.Native
+  name: DeviceAudioInformation
+  nameWithType: DeviceAudioInformation
+  fullName: E7.Native.DeviceAudioInformation
+- uid: E7.Native.NativeAudio.GetDeviceAudioInformation*
+  commentId: Overload:E7.Native.NativeAudio.GetDeviceAudioInformation
+  name: GetDeviceAudioInformation
+  nameWithType: NativeAudio.GetDeviceAudioInformation
+  fullName: E7.Native.NativeAudio.GetDeviceAudioInformation
+- uid: E7.Native.NativeAudioAnalyzer
+  commentId: T:E7.Native.NativeAudioAnalyzer
+  parent: E7.Native
+  name: NativeAudioAnalyzer
+  nameWithType: NativeAudioAnalyzer
+  fullName: E7.Native.NativeAudioAnalyzer
+- uid: UnityEngine.AudioSource
+  commentId: T:UnityEngine.AudioSource
+  isExternal: true
+- uid: E7.Native.NativeAudio.SilentAnalyze*
+  commentId: Overload:E7.Native.NativeAudio.SilentAnalyze
+  name: SilentAnalyze
+  nameWithType: NativeAudio.SilentAnalyze
+  fullName: E7.Native.NativeAudio.SilentAnalyze
